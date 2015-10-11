@@ -6,7 +6,7 @@ public class Mundo {
 	
 	
 	/**
-	 * La clase constructor de Mundo, genera una superficie con una longitud
+	 * La calse constructor de Mundo, genera una superficie con una longitud
 	 * especifica de filas y columnas, y genera NUMEROCELULAS en posiciones
 	 * aleatorias para esa superficie.
 	 */

@@ -4,8 +4,19 @@ public class Mundo {
 	private Superficie superficie;
 	public static final int NUMEROCELULAS = 6;
 	
+	
+	/**
+	 * La calse constructor de Mundo, genera una superficie con una longitud
+	 * especifica de filas y columnas, y genera NUMEROCELULAS en posiciones
+	 * aleatorias para esa superficie.
+	 */
 	public Mundo(){
-		
+		this.superficie = new Superficie(3,4);
+		/**
+		 * una primera aporximacion de lo que tiene que hacer el constructor seria :
+		 * for (int n = 0; n < NUMEROCELUAS; n++)
+		 * 		generaCelula();
+		 */
 	}
 	/**
 	 * para cada célula de la superficie ejecuta un paso de acuerdo a las

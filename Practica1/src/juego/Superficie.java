@@ -5,6 +5,7 @@ public class Superficie {
 	private int filas;
 	private int columnas;
 	
+
 	public Superficie(int nf, int nc){
 		this.filas = nf;
 		this.columnas = nc;
@@ -12,9 +13,10 @@ public class Superficie {
                 this.reset();
         }
 
+//No se si hay que poner la funcion como static
         public reset(){
-		  for(int i = 0; i < nf; i++){
-		 	for(int j = 0; j < nc; j++){
+		  for(int i = 0; i < this.filas; i++){
+		 	for(int j = 0; j < this.columnas; j++){
 		 	     this.superficie[i][j] = null;
 		       I}
 		  }

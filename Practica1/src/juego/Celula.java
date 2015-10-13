@@ -1,13 +1,10 @@
 package juego;
 
 public class Celula {
-	/**
-	* no se especifica este atributo en el enunciado para la clase Celula.
-	* private int reproducirse;
-	*/
 	private int noMovimiento;
 	private int movimiento;
 	
+// Crea una celula con movimiento = 0 y con numero de movimientos antes de morir = 0
 	public Celula(){
 		/**
 		* no se especifica este atributo en el enunciado para la clase Celula.
@@ -17,11 +14,7 @@ public class Celula {
 		this.movimiento = 0;
 	}
 	
-	public Celula(int reproducirse, int noMovimiento, int movimiento){
-		/**
-		* no se especifica este atributo en el enunciado para la clase Celula.
-		* this.reproducirse = reproducirse;
-		*/
+	public Celula(int noMovimiento, int movimiento){
 		this.noMovimiento = noMovimiento;
 		this.movimiento = movimiento;
 	}

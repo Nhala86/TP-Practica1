@@ -10,6 +10,13 @@ public class Superficie {
 		this.columnas = nc;
 		//No se si hay que hacer un bucle y meter null campo a campo
 		this.superficie = null;
+		/*
+		 * for(int i = 0; i < nf; i++){
+		 * 	for(int j = 0; j < nc; j++){
+		 * 	this.superficie[i][j] = null;
+		 *  }
+		 * }
+		 */
 	}
 	
 }

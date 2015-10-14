@@ -21,18 +21,22 @@ public class Controlador {
 		string.toLowerCase();
 		//Al final de cada comando hay que mostrar el tablero
 		while (!fin){
-			if (string == "paso"){ // "==" no va a funcionar, hay que utilizar el "equals"
+			//if (string == "paso"){ // "==" no va a funcionar, hay que utilizar el "equals"
+			if (string.equals("paso")){
 				//Lista de movimientos
 			}
-			else if (string == "iniciar"){
+			//else if (string == "iniciar"){
+			else if (string.equals("iniciar")){
 				//Inicio
 			}
 			//Hay que coger tambien 2 enteros
-			else if (string == "crearcelula"){
+			//else if (string == "crearcelula"){
+			else if (string.equals("crearcelula")){
 				
 			}
 			//Hay que coger tambien 2 enteros
-			else if (string == "eliminarcelula"){
+			//else if (string == "eliminarcelula"){
+			else if (string.equals("eliminarcelula")){
 				
 			}
 			else if (string == "ayuda"){

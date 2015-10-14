@@ -1,5 +1,7 @@
 package juego;
 
+import class Superficie;
+
 public class Mundo {
 	private Superficie superficie;
 	public static final int NUMEROCELULAS = 6;
@@ -10,8 +12,11 @@ public class Mundo {
 	 * especifica de filas y columnas, y genera NUMEROCELULAS en posiciones
 	 * aleatorias para esa superficie.
 	 */
-	public Mundo(){
-		this.superficie = new Superficie(3,4);
+	public static void Mundo(int n){
+		this.superficie = new Superficie(this.fila, this.columna);
+		for (int n = 0; n < NUMEROCELULAS; n++){
+			generarCelula();
+		}
 		/**
 		 * una primera aporximacion de lo que tiene que hacer el constructor seria :
 		 * for (int n = 0; n < NUMEROCELUAS; n++)
@@ -29,6 +34,24 @@ public class Mundo {
 		célula no se mueva dos veces en el mismo paso de evolución.
 	 */
 	public void evoluciona(){
+		
+	}
+	
+	/**
+	 * 
+	 */
+	public boolean crearCelulaSuperficie(){
+		
+	}
+	
+	/**
+	 * 
+	 */
+	public boolean eliminarCelulaSuperficie(){
+		
+	}
+	
+	public void generarCelula(){
 		
 	}
 }

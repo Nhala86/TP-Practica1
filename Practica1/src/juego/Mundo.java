@@ -1,27 +1,23 @@
 package juego;
 
-import class Superficie;
-
 public class Mundo {
 	private Superficie superficie;
-	public static final int NUMEROCELULAS = 6;
 	
+	
+	private static final int NUMEROCELULAS = 6;
+	private static final int NUMEROFILAS = 3;
+	private static final int NUMEROCOLUMNAS = 4;
 	
 	/**
 	 * La clase constructor de Mundo, genera una superficie con una longitud
 	 * especifica de filas y columnas, y genera NUMEROCELULAS en posiciones
 	 * aleatorias para esa superficie.
 	 */
-	public static void Mundo(int n){
-		this.superficie = new Superficie(this.fila, this.columna);
+	public Mundo(int n){
+		this.superficie = new Superficie(NUMEROFILAS, NUMEROCOLUMNAS);
 		for (int n = 0; n < NUMEROCELULAS; n++){
-			generarCelula();
+			generarCelulaAleatoria();
 		}
-		/**
-		 * una primera aporximacion de lo que tiene que hacer el constructor seria :
-		 * for (int n = 0; n < NUMEROCELUAS; n++)
-		 * 		generaCelula();
-		 */
 	}
 	/**
 	 * para cada célula de la superficie ejecuta un paso de acuerdo a las
@@ -51,7 +47,10 @@ public class Mundo {
 		
 	}
 	
-	public void generarCelula(){
+	/**
+	 * Generar la celulas en la superficie de forma random
+	 */
+	public void generarCelulaAleatoria(){
 		
 	}
 }

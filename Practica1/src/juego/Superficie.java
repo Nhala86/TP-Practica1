@@ -21,5 +21,8 @@ public class Superficie {
 		    }
 		}		 
 	}
-	
+     /**
+      * Metodo de validacion de la casilla, compara si la casilla esta vacia o llena
+      */
+	public void validarCasilla(){}
 }

@@ -21,7 +21,7 @@ public class Controlador {
 		string.toLowerCase();
 		//Al final de cada comando hay que mostrar el tablero
 		while (!fin){
-			if (string == "paso"){
+			if (string == "paso"){ // "==" no va a funcionar, hay que utilizar el "equals"
 				//Lista de movimientos
 			}
 			else if (string == "iniciar"){

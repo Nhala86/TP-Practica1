@@ -29,9 +29,7 @@ public class Mundo {
 	public void evoluciona(){
 		
 	}
-	public boolean libre(int f, int c){
-		return superficie.validarCasilla(f,c);
-	}
+	
 	public void vaciar(){
 		superficie.reset();
 	}
@@ -43,7 +41,7 @@ public class Mundo {
 	 */
 	public boolean crearCelulaSuperficie(int f, int c){
 		boolean ok = false;
-		if (f < Constantes.NUMEROFILAS && c < Constantes.NUMEROCOLUMNAS && f >= 0 && c >= 0){
+		if (f < Constantes.NUMEROFILAS && c < Constantes.NUMEROCOLUMNAS && f >= 0 && c >= 0 && superficie.validarCasilla(f,c)){
 			superficie.crear(f, c);
 			ok = true;
 		}
@@ -58,7 +56,7 @@ public class Mundo {
 	 */
 	public boolean eliminarCelulaSuperficie(int f, int c){
 		boolean ok = false;
-		if (f < Constantes.NUMEROFILAS && c < Constantes.NUMEROCOLUMNAS && f >= 0 && c >= 0){
+		if (f < Constantes.NUMEROFILAS && c < Constantes.NUMEROCOLUMNAS && f >= 0 && c >= 0 && !superficie.validarCasilla(f,c)){
 			superficie.borrar(f, c);
 			ok = true;
 		}

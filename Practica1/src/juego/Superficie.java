@@ -39,13 +39,43 @@ public class Superficie {
 	public boolean validarCasilla(int f, int c){
 		return (this.superficie[f][c] == null);
 	}
+
+/**
+ * 
+ * @param f valor entero positivo que indica el numero de filas
+ * @param c valor entero positivo que indica el numero de columnas
+ * @return TRUE si vacio la casilla. FALSE para el caso contrario
+ */
+	public boolean vaciarCasilla(int f, int c){
+		boolean ok = false;
+		if(!validarCasilla(f, c)){
+			this.superficie[f][c] = null;
+			ok = true;
+		}
+		return ok;
+	}
+
+/**
+* 
+* @param f valor entero positivo que indica el numero de filas
+* @param c valor entero positivo que indica el numero de columnas
+* @return TRUE si lleno la casilla. FALSE para el caso contrario
+*/
+	public boolean llenarCasilla(int f, int c){
+		boolean ok = false;
+		if(validarCasilla(f, c)){
+			this.superficie[f][c] = new Celula();
+			ok = true;
+		}
+		return ok;
+	}
 	
 /**
  * 
  * @param n valor entero positivo
  * @return un valor entero positivo a modulo de n
  */
-	private static int generaPosicion(int n){
+	private static int generaValor(int n){
 		return (int)(Math.floor(Math.random()*101) % n);
 	}
 

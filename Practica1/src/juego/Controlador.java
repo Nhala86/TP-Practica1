@@ -6,11 +6,15 @@ public class Controlador {
 	private Mundo mundo;
 	private Scanner in;
 	
-	public Controlador(Mundo mundo, Scanner in){
-		this.mundo = mundo;
-		//No se cual de los 2 es
+/**
+ * 
+ * @param nf valor entero positivo que indica el numero de filas del mundo
+ * @param nc valor entero positivo que indica el numero de columnas del mundo
+ * @param n numero entero positivo de celulas que se generan en el mundo
+ */
+	public Controlador(int nf, int nc, int n){
+		this.mundo = new Mundo(nf, nc, n);
 		this.in = new Scanner(System.in);
-		this.in = in;
 	}
 	
 	public void realizaSimulacion(){

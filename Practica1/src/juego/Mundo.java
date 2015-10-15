@@ -5,13 +5,14 @@ public class Mundo {
 	
 	
 	
-	/**
-	 * La clase constructor de Mundo, genera una superficie con una longitud
-	 * especifica de filas y columnas, y genera NUMEROCELULAS en posiciones
-	 * aleatorias para esa superficie.
-	 */
-	public Mundo(int f, int c, int n){
-		this.superficie = new Superficie(f, c);
+/**
+ * 
+ * @param nf valor entero positivo que indica el numero de filas de la superficie
+ * @param nc valor entero positivo que indica el numero de columnas de la superficie
+ * @param n numero entero positivo de celulas que se generan en la superficie
+ */
+	public Mundo(int nf, int nc, int n){
+		this.superficie = new Superficie(nf, nc);
 		for (int i = 0; i < n; i++){
 			generarCelulaAleatoria();
 		}
@@ -32,15 +33,21 @@ public class Mundo {
 	
 	/**
 	 * 
-	 */
-	public boolean crearCelulaSuperficie(){
+	 * @param f
+	 * @param c
+	 * @return
+	 */	  
+	public boolean crearCelulaSuperficie(int f, int c){
 		return true;
 	}
 	
 	/**
 	 * 
-	 */
-	public boolean eliminarCelulaSuperficie(){
+	 * @param f
+	 * @param c
+	 * @return
+	 */	 
+	public boolean eliminarCelulaSuperficie(int f, int c){
 		return true;
 	}
 	

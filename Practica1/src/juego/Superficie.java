@@ -90,14 +90,5 @@ public class Superficie {
 		return ok;
 	}
 	
-/**
- * 
- * @param n valor entero positivo
- * @return un valor entero positivo a modulo de n
- */
-	private static int generaValor(int n){
-		return (int)(Math.floor(Math.random()*101) % n);
-	}
 
-}
 

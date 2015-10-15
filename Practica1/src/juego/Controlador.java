@@ -21,22 +21,44 @@ public class Controlador {
 		boolean fin = false;
 		System.out.println("Comando > ");
 		String string = in.nextLine();
+		String [] palabras = string.split(" ");
 		//Al final de cada comando hay que mostrar el tablero
 		while (!fin){
 			if (string.equalsIgnoreCase("paso")){
-				//Lista de movimientos
+				mundo.evoluciona();
+				//Mostrar tablero
 			}
 			
 			else if (string.equalsIgnoreCase("iniciar")){
-				//Inicio
+				System.out.println("Iniciando de nuevo el juego....");
+				mundo.vaciar();
+				for (int i = 0; i < Constantes.NUMEROCELULAS; i++){
+					generarCelulaAleatoria();
+				}
 			}
 			//Hay que coger tambien 2 enteros
-			else if (string.equalsIgnoreCase("crearcelula")){
-				
+			else if (palabras[0].equalsIgnoreCase("crearcelula")){
+				int f = new Integer (palabras[1]);
+				int c = new Integer (palabras[2]);
+				if (crearCelulaSuperficie(f, c)){
+					System.out.print("Creamos nueva celula en: (" palabras[1] "," palabras[2] ")");
+					//Mostrar tablero
+				}
+				else {
+					System.out.println("Error, la posicion indicada no existe o esta ocupada");
+				}
 			}
 			//Hay que coger tambien 2 enteros
-			else if (string.equalsIgnoreCase("eliminarcelula")){
-				
+			else if (palabras[0].equalsIgnoreCase("eliminarcelula")){
+				int f = new Integer (palabras[1]);
+				int c = new Integer (palabras[2]);
+				if (eliminarCelulaSuperficie(f, c)){
+					System.out.print("Eliminamos la celula en: (" palabras[1] "," palabras[2] ")");
+					//Mostrar tablero
+				}
+				else {
+					System.out.println("Error, la posicion indicada no existe o esta ocupada");
+				}
 			}
 			else if (string.equalsIgnoreCase("ayuda")){
 				System.out.println("POSIBLES COMANDOS:");

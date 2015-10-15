@@ -29,7 +29,9 @@ public class Mundo {
 	public void evoluciona(){
 		
 	}
-	
+	public boolean libre(int f, int c){
+		return superficie.validarCasilla(f,c);
+	}
 	public void vaciar(){
 		superficie.reset();
 	}

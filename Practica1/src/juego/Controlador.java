@@ -21,7 +21,7 @@ public class Controlador {
 		boolean fin = false;
 		System.out.println("Comando > ");
 		String string = in.nextLine();
-		//convierte la cadena (string) a minúsculas
+		//convierte la cadena (string) a minÃºsculas
 		string.toLowerCase();
 		//Al final de cada comando hay que mostrar el tablero
 		while (!fin){
@@ -47,11 +47,13 @@ public class Controlador {
 				System.out.println("POSIBLES COMANDOS:");
 				System.out.println("PASO: realiza un paso en la simulacion");
 				System.out.println("AYUDA: muestra esta ayuda");
-				System.out.println("VACIAR: crea un mundo vacío");
-				System.out.println("CREARCELULA F C: crea una nueva celula en la posición (f,c) si es posible");
-				System.out.println("ELIMINARCELULA F C: elimina una celula de la posición (f,c) si es posible");
+				System.out.println("VACIAR: crea un mundo vacÃ­o");
+				System.out.println("CREARCELULA F C: crea una nueva celula en la posiciÃ³n (f,c) si es posible");
+				System.out.println("ELIMINARCELULA F C: elimina una celula de la posiciÃ³n (f,c) si es posible");
 			}
 			else if (string == "vaciar"){
+				//No se si hacer el bucle entero o no, se podria intentar reutilizar superficie.reset();
+				//mundo.eliminarCelulaSuperficie(f, c);
 				System.out.println("Vaciando la superficie....");
 			}
 			else if (string == "salir"){
@@ -60,7 +62,6 @@ public class Controlador {
 			}
 			else {
 				System.out.println("Comando no valido, introduzca otro > ");
-				
 			}
 		}
 	}

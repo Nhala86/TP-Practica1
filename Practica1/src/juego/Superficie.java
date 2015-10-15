@@ -26,8 +26,7 @@ public class Superficie {
     			borrar(i,j);
 		    }
 		}		 
-	}
-    
+	}  
 
     /**
      * Borra la celula en la posicion (i,j) de la matriz

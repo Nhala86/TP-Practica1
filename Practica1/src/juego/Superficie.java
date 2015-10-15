@@ -16,7 +16,12 @@ public class Superficie {
 		this.superficie = new Celula[this.filas][this.columnas];
         this.reset();
     }
-
+    	/**
+    	 * Mostrar el tablero por pantalla
+    	 */
+	public String toString(){
+		
+	}
 /**
  * Procedimiento que pone a NULL todas las casillas de la superficie
  */

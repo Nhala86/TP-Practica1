@@ -1,7 +1,5 @@
 package juego;
 
-import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
-
 public class Superficie {
 	private Celula[][] superficie;
 	private int filas;
@@ -25,13 +23,33 @@ public class Superficie {
     public void reset(){
     	for(int i = 0; i < this.filas; i++){
     		for(int j = 0; j < this.columnas; j++){
-    			this.superficie[i][j] = null;
+    			borrar(i,j);
 		    }
 		}		 
 	}
     
+
+    /**
+     * Borra la celula en la posicion (i,j) de la matriz
+     * @param i Valor entero positivo fila de la matriz
+     * @param j Valor entero positivo columna de la matriz
+     */
+    public void borrar(int i, int j){
+    	this.superficie[i][j] = null;
+    }
+    
+    /**
+     * Crea la celula en la posicion (i,j) de la matriz
+     * @param i Valor entero positivo fila de la matriz
+     * @param j Valor entero positivo columna de la matriz
+     */
+    public void crear(int i, int j){
+    	this.superficie[i][j] = new Celula();
+    }
 /**
- * 
+ * Mira si la casilla pasada por parametro esta vacia
+/**
+
  * @param f valor entero positivo que indica el numero de filas
  * @param c valor entero positivo que indica el numero de columnas
  * @return TRUE si la casilla esta vacia. FALSE para el caso contrario
@@ -39,6 +57,8 @@ public class Superficie {
 	public boolean validarCasilla(int f, int c){
 		return (this.superficie[f][c] == null);
 	}
+
+
 
 /**
  * 
@@ -80,3 +100,4 @@ public class Superficie {
 	}
 
 }
+

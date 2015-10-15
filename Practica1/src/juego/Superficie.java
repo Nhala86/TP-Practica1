@@ -47,9 +47,7 @@ public class Superficie {
     	this.superficie[i][j] = new Celula();
     }
 /**
- * Mira si la casilla pasada por parametro esta vacia
-/**
-
+ * 
  * @param f valor entero positivo que indica el numero de filas
  * @param c valor entero positivo que indica el numero de columnas
  * @return TRUE si la casilla esta vacia. FALSE para el caso contrario
@@ -57,8 +55,6 @@ public class Superficie {
 	public boolean validarCasilla(int f, int c){
 		return (this.superficie[f][c] == null);
 	}
-
-
 
 /**
  * 
@@ -90,5 +86,5 @@ public class Superficie {
 		return ok;
 	}
 	
-
+}
 

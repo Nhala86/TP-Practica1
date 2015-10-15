@@ -1,19 +1,27 @@
 package juego;
 
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
+
 public class Superficie {
 	private Celula[][] superficie;
 	private int filas;
 	private int columnas;
 	
-
+/**
+ * Constructor de la clase superficie
+ * @param nf valor entero positivo que indica el numero de filas de la superficie
+ * @param nc valor entero positivo que indica el numero de columnas de la superficie
+ */
 	public Superficie(int nf, int nc){
 		this.filas = nf;
 		this.columnas = nc;
-		this.superficie = new Celula[this.filas] [this.columnas];
+		this.superficie = new Celula[this.filas][this.columnas];
         this.reset();
     }
 
-//No se si hay que poner la funcion como static
+/**
+ * Procedimiento que pone a NULL todas las casillas de la superficie
+ */
     public void reset(){
     	for(int i = 0; i < this.filas; i++){
     		for(int j = 0; j < this.columnas; j++){
@@ -21,8 +29,24 @@ public class Superficie {
 		    }
 		}		 
 	}
-     /**
-      * Metodo de validacion de la casilla, compara si la casilla esta vacia o llena
-      */
-	public void validarCasilla(){}
+    
+/**
+ * 
+ * @param f valor entero positivo que indica el numero de filas
+ * @param c valor entero positivo que indica el numero de columnas
+ * @return TRUE si la casilla esta vacia. FALSE para el caso contrario
+ */
+	public boolean validarCasilla(int f, int c){
+		return (this.superficie[f][c] == null);
+	}
+	
+/**
+ * 
+ * @param n valor entero positivo
+ * @return un valor entero positivo a modulo de n
+ */
+	private static int generaPosicion(int n){
+		return (int)(Math.floor(Math.random()*101) % n);
+	}
+
 }

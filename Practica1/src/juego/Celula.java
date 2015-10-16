@@ -15,4 +15,12 @@ public class Celula {
 		this.movimiento = movimiento;
 	}
 
+        public int getnoMovimiento(){
+                return this.noMovimiento;
+        }
+
+        public int getMovimiento(){
+                return this.movimiento;
+        }
+
 }

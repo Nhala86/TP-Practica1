@@ -6,19 +6,15 @@ public class Controlador {
 	private Mundo mundo;
 	private Scanner in;
 	
-/**
- * 
- * @param nf valor entero positivo que indica el numero de filas del mundo
- * @param nc valor entero positivo que indica el numero de columnas del mundo
- * @param n numero entero positivo de celulas que se generan en el mundo
- */
-	public Controlador(int nf, int nc, int n){
+
+	public Controlador(Mundo mundo, Scanner in){
 		this.mundo = new Mundo();
 		this.in = new Scanner(System.in);
 	}
 	
 	public void realizaSimulacion(){
 		boolean fin = false;
+                mundo.toString();
 		System.out.println("Comando > ");
 		String string = in.nextLine();
 		String [] palabras = string.split(" ");
@@ -26,7 +22,7 @@ public class Controlador {
 		while (!fin){
 			if (string.equalsIgnoreCase("paso")){
 				mundo.evoluciona();
-				//Mostrar tablero
+				mundo.toString();
 			}
 			
 			else if (string.equalsIgnoreCase("iniciar")){
@@ -35,30 +31,33 @@ public class Controlador {
 				for (int i = 0; i < Constantes.NUMEROCELULAS; i++){
 					generarCelulaAleatoria();
 				}
+                                mundo.toString();
 			}
-			//Hay que coger tambien 2 enteros
+			
 			else if (palabras[0].equalsIgnoreCase("crearcelula")){
 				int f = new Integer (palabras[1]);
 				int c = new Integer (palabras[2]);
 				if (crearCelulaSuperficie(f, c)){
 					System.out.print("Creamos nueva celula en: (" palabras[1] "," palabras[2] ")");
-					//Mostrar tablero
+				        
 				}
 				else {
 					System.out.println("Error, la posicion indicada no existe o esta ocupada");
 				}
-			}
-			//Hay que coger tambien 2 enteros
+                                mundo.toString();			
+                        }
+			
 			else if (palabras[0].equalsIgnoreCase("eliminarcelula")){
 				int f = new Integer (palabras[1]);
 				int c = new Integer (palabras[2]);
 				if (eliminarCelulaSuperficie(f, c)){
 					System.out.print("Eliminamos la celula en: (" palabras[1] "," palabras[2] ")");
-					//Mostrar tablero
+					
 				}
 				else {
 					System.out.println("Error, la posicion indicada no existe o esta ocupada");
 				}
+                                mundo.toString();
 			}
 			else if (string.equalsIgnoreCase("ayuda")){
 				System.out.println("POSIBLES COMANDOS:");
@@ -67,10 +66,12 @@ public class Controlador {
 				System.out.println("VACIAR: crea un mundo vacio");
 				System.out.println("CREARCELULA F C: crea una nueva celula en la posicion (f,c) si es posible");
 				System.out.println("ELIMINARCELULA F C: elimina una celula de la posicion (f,c) si es posible");
+                                mundo.toString();
 			}
 			else if (string.equalsIgnoreCase ("vaciar")){
 				mundo.vaciar();
 				System.out.println("Vaciando la superficie....");
+                                mundo.toString();
 			}
 			else if (string.equalsIgnoreCase("salir")){
 				System.out.println("Fin de la simulacion.....");
@@ -78,13 +79,8 @@ public class Controlador {
 			}
 			else {
 				System.out.println("Comando no valido, introduzca otro > ");
+                                mundo.toString();
 			}
 		}
-	}
-	
-	//Pruebas de la simulacion
-	public static void main(String[] args) {
-		
-
 	}
 }

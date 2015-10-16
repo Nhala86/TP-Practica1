@@ -7,11 +7,16 @@ public class Controlador {
 	private Scanner in;
 	
 
-	public Controlador(Mundo mundo, Scanner in){
+	public Controlador(){
 		this.mundo = new Mundo();
 		this.in = new Scanner(System.in);
 	}
 	
+        public Controlador(Mundo mundo, Scanner in){
+                this.mundo = mundo;
+                this.in = in;
+}
+
 	public void realizaSimulacion(){
 		boolean fin = false;
                 mundo.toString();

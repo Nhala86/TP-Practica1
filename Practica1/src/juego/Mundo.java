@@ -29,7 +29,9 @@ public class Mundo {
 	public void evoluciona(){
 		
 	}
-	
+	/**
+	 * Metodo que vacia el tablero de celulas
+	 */
 	public void vaciar(){
 		superficie.reset();
 	}
@@ -37,14 +39,17 @@ public class Mundo {
 	 * Crea una celula en la posicion (f,c) de la superficie
 	 * @param f Valor entero positivo fila de la matriz
 	 * @param c Valor entero positivo columna de la matriz
-	 * @return Si se ha hecho el proceso de crear la celula
+	 * @return TRUE se ha hecho el proceso de crear la celula
 	 */
 	public boolean crearCelulaSuperficie(int f, int c){
 		boolean ok = false;
+		/*
+		 * f y c tienen que llegar ya verificadas como valores validos en la clase controlador
 		if (f < Constantes.NUMEROFILAS && c < Constantes.NUMEROCOLUMNAS && f >= 0 && c >= 0 && superficie.validarCasilla(f,c)){
 			superficie.crear(f, c);
+			*/
+		if(this.superficie.llenarCasilla(f, c))
 			ok = true;
-		}
 		return ok;
 	}
 	
@@ -52,7 +57,7 @@ public class Mundo {
 	 * Elimina la celula en la posicion (f,c) de la superficie
 	 * @param f Valor entero positivo fila de la matriz
 	 * @param c Valor entero positivo columna de la matriz
-	 * @return Si se ha hecho el proceso de eliminar la celula
+	 * @return TRUE si se ha hecho el proceso de eliminar la celula
 	 */
 	public boolean eliminarCelulaSuperficie(int f, int c){
 		boolean ok = false;

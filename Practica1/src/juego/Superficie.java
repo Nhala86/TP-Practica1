@@ -13,7 +13,7 @@ public class Superficie {
 	public Superficie(int nf, int nc){
 		this.filas = nf;
 		this.columnas = nc;
-		this.superficie = new Celula[this.filas][this.columnas];
+		//this.superficie = new Celula[this.filas][this.columnas];
         this.reset();
     }
     	/**
@@ -28,28 +28,31 @@ public class Superficie {
     public void reset(){
     	for(int i = 0; i < this.filas; i++){
     		for(int j = 0; j < this.columnas; j++){
-    			borrar(i,j);
+    			this.superficie[i][j] = null;
 		    }
 		}		 
 	}  
 
     /**
+     * METODO CON RIESGO
      * Borra la celula en la posicion (i,j) de la matriz
      * @param i Valor entero positivo fila de la matriz
      * @param j Valor entero positivo columna de la matriz
-     */
     public void borrar(int i, int j){
     	this.superficie[i][j] = null;
     }
-    
+    */
+
     /**
+     * 
+     * METODO CON RIESGO
      * Crea la celula en la posicion (i,j) de la matriz
      * @param i Valor entero positivo fila de la matriz
      * @param j Valor entero positivo columna de la matriz
-     */
     public void crear(int i, int j){
     	this.superficie[i][j] = new Celula();
-    }
+    */
+ 
 /**
  * 
  * @param f valor entero positivo que indica el numero de filas

@@ -16,7 +16,7 @@ public class Celula {
 	}
 
         public String toString(){
-                return this.noMovimiento + "—" + this.movimiento;
-}
+                return this.noMovimiento + "-" + this.movimiento;
+        }
 
 }

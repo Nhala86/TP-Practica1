@@ -13,14 +13,15 @@ public class Superficie {
 	public Superficie(int nf, int nc){
 		this.filas = nf;
 		this.columnas = nc;
-		//this.superficie = new Celula[this.filas][this.columnas];
+		this.superficie = new Celula[this.filas][this.columnas];
         this.reset();
     }
     	/**
     	 * Mostrar el tablero por pantalla
     	 */
 	public String toString(){
-		
+		superficie[i][j].toString()
+		return 
 	}
 /**
  * Procedimiento que pone a NULL todas las casillas de la superficie
@@ -32,34 +33,14 @@ public class Superficie {
 		    }
 		}		 
 	}  
-
-    /**
-     * METODO CON RIESGO
-     * Borra la celula en la posicion (i,j) de la matriz
-     * @param i Valor entero positivo fila de la matriz
-     * @param j Valor entero positivo columna de la matriz
-    public void borrar(int i, int j){
-    	this.superficie[i][j] = null;
-    }
-    */
-
-    /**
-     * 
-     * METODO CON RIESGO
-     * Crea la celula en la posicion (i,j) de la matriz
-     * @param i Valor entero positivo fila de la matriz
-     * @param j Valor entero positivo columna de la matriz
-    public void crear(int i, int j){
-    	this.superficie[i][j] = new Celula();
-    */
- 
+    
 /**
  * 
  * @param f valor entero positivo que indica el numero de filas
  * @param c valor entero positivo que indica el numero de columnas
  * @return TRUE si la casilla esta vacia. FALSE para el caso contrario
  */
-	public boolean validarCasilla(int f, int c){
+	public boolean casillaVacia(int f, int c){
 		return (this.superficie[f][c] == null);
 	}
 
@@ -71,7 +52,7 @@ public class Superficie {
  */
 	public boolean vaciarCasilla(int f, int c){
 		boolean ok = false;
-		if(!validarCasilla(f, c)){
+		if(!casillaVacia(f, c) && f >= 0 && c >= 0 && f < Constantes.NUMEROFILAS && c < Constantes.NUMEROCOLUMNAS){
 			this.superficie[f][c] = null;
 			ok = true;
 		}
@@ -86,7 +67,7 @@ public class Superficie {
 */
 	public boolean llenarCasilla(int f, int c){
 		boolean ok = false;
-		if(validarCasilla(f, c)){
+		if(casillaVacia(f, c) && f >= 0 && c >= 0 && f < Constantes.NUMEROFILAS && c < Constantes.NUMEROCOLUMNAS){
 			this.superficie[f][c] = new Celula();
 			ok = true;
 		}

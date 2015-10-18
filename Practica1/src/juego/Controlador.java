@@ -18,11 +18,12 @@ public class Controlador {
 
 	public void realizaSimulacion(){
 		boolean fin = false;
-                mundo.toString();
+        mundo.toString();
 		System.out.println("Comando > ");
 		String string = in.nextLine();
 		String [] palabras = string.split(" ");
 		while (!fin){
+			//falta hacer mundo.evoluciona
 			if (string.equalsIgnoreCase("paso")){
 				mundo.evoluciona();
 				mundo.toString();

@@ -15,8 +15,8 @@ public class Celula {
 		this.movimiento = movimiento;
 	}
 
-        public String toString(){
-                return this.noMovimiento + "-" + this.movimiento;
-        }
+    public String toString(){
+       return this.noMovimiento + "-" + this.movimiento;
+    }
 
 }

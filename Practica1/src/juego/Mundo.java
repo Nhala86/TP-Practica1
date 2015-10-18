@@ -41,7 +41,7 @@ public class Mundo {
 	 * @return TRUE se ha hecho el proceso de crear la celula
 	 */
 	public boolean crearCelulaSuperficie(int f, int c){ // estaba bien antes, si haces esto no devuelve true ni false
-		return this.superficie.llenarCasilla(f, c);
+		return superficie.llenarCasilla(f, c);  //Si que devuelve true o false, mira la funcion en superficie, pasa lo mismo en vaciar casilla
 	}
 	
 	/**

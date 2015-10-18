@@ -16,13 +16,22 @@ public class Superficie {
 		this.superficie = new Celula[this.filas][this.columnas];
         this.reset();
     }
+	
     /**
-     * Mostrar el tablero por pantalla
+     * Recorre casilla a casilla la matriz de celulas y las junta en una cadena para mostrar por consola
+     * @return La matriz como un string
      */
 	public String toString(){
-		superficie[i][j].toString()
-		return 
+		String matriz = " ";
+		for(int i = 0; i < this.filas; i++){
+    		for(int j = 0; j < this.columnas; j++){
+    			matriz = superficie[i][j].toString() + matriz ;
+		    }
+    		matriz = matriz + System.getProperty("line.separator");
+		}
+		return matriz;
 	}
+	
 	/**
 	 * Procedimiento que pone a NULL todas las casillas de la superficie
 	 */
@@ -34,25 +43,27 @@ public class Superficie {
 		}		 
 	}  
     
-    /**
-     * 
-     * @param f valor entero positivo que indica el numero de filas
-     * @param c valor entero positivo que indica el numero de columnas
-     * @return TRUE si la casilla esta vacia. FALSE para el caso contrario
-     */
+	/**
+	 * Mira si la casilla pasada por parametro esta vacia
+	 * @param f valor entero positivo que indica el numero de filas
+	 * @param c valor entero positivo que indica el numero de columnas
+	 * @return TRUE si la casilla esta vacia. FALSE para el caso contrario
+	 */
 	public boolean casillaVacia(int f, int c){
 		return (this.superficie[f][c] == null);
 	}
 
 	/**
-	 * 
+	 * Vacia la casilla pasada por parametro si no esta vacia ya y existe
 	 * @param f valor entero positivo que indica el numero de filas
 	 * @param c valor entero positivo que indica el numero de columnas
 	 * @return TRUE si vacio la casilla. FALSE para el caso contrario
 	 */
 	public boolean vaciarCasilla(int f, int c){
 		boolean ok = false;
-		if(!casillaVacia(f, c) && f >= 0 && c >= 0 && f < Constantes.NUMEROFILAS && c < Constantes.NUMEROCOLUMNAS){ // Estas haciendo lo mismo dos veces, casillaVacia ya vacia la superficie entera
+		//De esta forma funciona 100%, solo con casilla vacia podria darse fallo si pasas por parametro un numero que no
+		// este en el rango de las casillas, y que no funcione el programa
+		if(!casillaVacia(f, c) && f >= 0 && c >= 0 && f < Constantes.NUMEROFILAS && c < Constantes.NUMEROCOLUMNAS){
 			this.superficie[f][c] = null;
 			ok = true;
 		}
@@ -60,14 +71,14 @@ public class Superficie {
 	}
 
 	/**
-	 * 
-	 * @param f valor entero positivo que indica el numero de filas
-	 * @param c valor entero positivo que indica el numero de columnas
-	 * @return TRUE si lleno la casilla. FALSE para el caso contrario
-	 */
+	* 
+	* @param f valor entero positivo que indica el numero de filas
+	* @param c valor entero positivo que indica el numero de columnas
+	* @return TRUE si lleno la casilla. FALSE para el caso contrario
+	*/
 	public boolean llenarCasilla(int f, int c){
 		boolean ok = false;
-		if(casillaVacia(f, c) && f >= 0 && c >= 0 && f < Constantes.NUMEROFILAS && c < Constantes.NUMEROCOLUMNAS){// condicion demasiado grande
+		if(casillaVacia(f, c) && f >= 0 && c >= 0 && f < Constantes.NUMEROFILAS && c < Constantes.NUMEROCOLUMNAS){
 			this.superficie[f][c] = new Celula();
 			ok = true;
 		}

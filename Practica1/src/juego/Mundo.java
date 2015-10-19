@@ -26,7 +26,13 @@ public class Mundo {
 	 * Si no puede moverse, tiene un maximo de paso para poder hacerlo, si no muere
 	 */
 	public void evoluciona(){
-		
+		for(int i = 0; i < Constantes.NUMEROFILAS; i++){ // Tienes que comparar con this.Superficie, pero todavia no tengo claro como llamarlo. Asi que de momento lo hago con la constante
+			for(int j = 0; j < Constantes.NUMEROCOLUMNAS; j++){
+				if(){
+					
+				}	
+			}
+		}	
 	}
 	/**
 	 * Metodo que vacia el tablero de celulas

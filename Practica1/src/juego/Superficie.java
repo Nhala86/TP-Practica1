@@ -88,5 +88,32 @@ public class Superficie {
 		return ok;
 	}
 	
+	/**
+	 * 
+	 * @param f
+	 * @param c
+	 * @return
+	 */	
+	private int posicionCelula(int f, int c){
+		int posicion;
+		if(f == 0 && c == 0)
+			posicion = 0; // esquina superior izquierda
+		else if(f == 0 && (c > 0 && c < this.columnas -1))
+			posicion = 1; // lado superior
+		else if(f == 0 && c == this.columnas -1)
+			posicion = 2; // esquina superior derecha
+		else if((f > 0 && f < this.filas -1))
+		
+		return posicion;
+	} 
+	/**
+	 * Metodo que mueve la celula segun la posicion donde se encuentra
+	 */
+	public void moverCelula(int f, int c){
+		if(){
+			
+		}
+	}
+	
 }
 

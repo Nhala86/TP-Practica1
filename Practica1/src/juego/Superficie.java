@@ -73,7 +73,7 @@ public class Superficie {
 	}
 
 	/**
-	* 
+	* Metodo que genera una celula nueva si la casilla esta vacia
 	* @param f valor entero positivo acotado en un rango valido del numero de filas
 	* @param c valor entero positivo acotado en un rango valido del numero de columnas
 	* @return TRUE si lleno la casilla. FALSE para el caso contrario
@@ -89,29 +89,57 @@ public class Superficie {
 	}
 	
 	/**
-	 * 
-	 * @param f
-	 * @param c
-	 * @return
+	 * Metodo que indica donde se encuentra la celula 
+	 * @param f valor entero positivo acotado en un rango valido del numero de filas
+	 * @param c valor entero positivo acotado en un rango valido del numero de columnas
+	 * @return entero de la posicion donde se encuentra la celula
 	 */	
 	private int posicionCelula(int f, int c){
 		int posicion;
 		if(f == 0 && c == 0)
-			posicion = 0; // esquina superior izquierda
+			posicion = 1; // esquina superior izquierda
 		else if(f == 0 && (c > 0 && c < this.columnas -1))
-			posicion = 1; // lado superior
+			posicion = 2; // lado superior
 		else if(f == 0 && c == this.columnas -1)
-			posicion = 2; // esquina superior derecha
-		else if((f > 0 && f < this.filas -1))
-		
+			posicion = 3; // esquina superior derecha
+		else if((f > 0 && f < this.filas -1)&& c == 0)
+			posicion = 4; // lado izquierdo
+		else if ((f > 0 && f < this.filas -1) && c == this.columnas -1)
+			posicion = 6; // lado derecho
+		else if(f == this.filas -1 && c == 0)
+			posicion = 7; // esquina inferior izquierda
+		else if(f == this.filas -1 && (c > 0 && c < this.columnas -1))
+			posicion = 8; // lado inferior
+		else if (f == this.filas -1 && c == this.columnas -1)
+			posicion = 9; // esquina inferior derecha		 
+		else posicion = 5; // posiciones centrales		
 		return posicion;
 	} 
 	/**
 	 * Metodo que mueve la celula segun la posicion donde se encuentra
 	 */
 	public void moverCelula(int f, int c){
-		if(){
-			
+		int x = posicionCelula(f, c);
+		switch(x){
+			case 1:
+				
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			case 5:
+				break;
+			case 6:
+				break;
+			case 7:
+				break;
+			case 8:
+				break;
+			case 9:
+				break;			
 		}
 	}
 	

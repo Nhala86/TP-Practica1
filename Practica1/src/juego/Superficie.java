@@ -55,15 +55,17 @@ public class Superficie {
 
 	/**
 	 * Vacia la casilla pasada por parametro si no esta vacia ya y existe
-	 * @param f valor entero positivo que indica el numero de filas
-	 * @param c valor entero positivo que indica el numero de columnas
+	 * @param f valor entero positivo acotado en un rango valido del numero de filas
+	 * @param c valor entero positivo acotado en un rango valido del numero de columnas
 	 * @return TRUE si vacio la casilla. FALSE para el caso contrario
 	 */
 	public boolean vaciarCasilla(int f, int c){
 		boolean ok = false;
 		//De esta forma funciona 100%, solo con casilla vacia podria darse fallo si pasas por parametro un numero que no
 		// este en el rango de las casillas, y que no funcione el programa
-		if(!casillaVacia(f, c) && f >= 0 && c >= 0 && f < Constantes.NUMEROFILAS && c < Constantes.NUMEROCOLUMNAS){
+		// NO SE DEBE pasar un parametro incorrecto, esto ya debe comprobarlo el controlador cuando le pide al usuario el numero
+		// if(!casillaVacia(f, c) && f >= 0 && c >= 0 && f < Constantes.NUMEROFILAS && c < Constantes.NUMEROCOLUMNAS){
+		if(!casillaVacia(f, c)){
 			this.superficie[f][c] = null;
 			ok = true;
 		}
@@ -72,13 +74,14 @@ public class Superficie {
 
 	/**
 	* 
-	* @param f valor entero positivo que indica el numero de filas
-	* @param c valor entero positivo que indica el numero de columnas
+	* @param f valor entero positivo acotado en un rango valido del numero de filas
+	* @param c valor entero positivo acotado en un rango valido del numero de columnas
 	* @return TRUE si lleno la casilla. FALSE para el caso contrario
 	*/
 	public boolean llenarCasilla(int f, int c){
 		boolean ok = false;
-		if(casillaVacia(f, c) && f >= 0 && c >= 0 && f < Constantes.NUMEROFILAS && c < Constantes.NUMEROCOLUMNAS){
+		//if(casillaVacia(f, c) && f >= 0 && c >= 0 && f < Constantes.NUMEROFILAS && c < Constantes.NUMEROCOLUMNAS){
+		if(casillaVacia(f, c)){
 			this.superficie[f][c] = new Celula();
 			ok = true;
 		}

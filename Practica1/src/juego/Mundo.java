@@ -40,8 +40,8 @@ public class Mundo {
 	 * @param c Valor entero positivo columna de la matriz
 	 * @return TRUE se ha hecho el proceso de crear la celula
 	 */
-	public boolean crearCelulaSuperficie(int f, int c){ // estaba bien antes, si haces esto no devuelve true ni false
-		return superficie.llenarCasilla(f, c);  //Si que devuelve true o false, mira la funcion en superficie, pasa lo mismo en vaciar casilla
+	public boolean crearCelulaSuperficie(int f, int c){ 
+		return superficie.llenarCasilla(f, c);  
 	}
 	
 	/**

@@ -18,6 +18,7 @@ public class Controlador {
 
 	public void realizaSimulacion(){
 		boolean fin = false;
+		// Los valores del usuario deberian estar como validos
         mundo.toString();
 		System.out.println("Comando > ");
 		String string = in.nextLine();

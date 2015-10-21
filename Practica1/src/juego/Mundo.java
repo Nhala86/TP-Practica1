@@ -28,7 +28,7 @@ public class Mundo {
 	//Uso las constantes que para eso estan, no hace falta crear funciones en superficie y demas para hacer algo que
 	//las constantes nos dan, pues el tamaño se crean con ellas y el programa no varia de tamaño
 	public void evoluciona(){
-		for(int i = 0; i < Constantes.NUMEROFILAS; i++){ // Tienes que comparar con this.Superficie, pero todavia no tengo claro como llamarlo. Asi que de momento lo hago con la constante
+		for(int i = 0; i < Constantes.NUMEROFILAS; i++){ 
 			for(int j = 0; j < Constantes.NUMEROCOLUMNAS; j++){
 				//if(){
 					
@@ -68,7 +68,7 @@ public class Mundo {
 	 * @return Un entero entre 0 y n - 1
 	 */
 	private static int generaPosicion(int n){
-		return (int)((Math.random() * n));
+		return (int)((Math.random() * n));		
 	}
 	
 	/**

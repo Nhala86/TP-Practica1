@@ -66,7 +66,7 @@ public class Mundo {
 	 * @return Un entero entre 0 y n - 1
 	 */
 	private static int generaPosicion(int n){
-		return (int)((Math.random() * n));
+		return (int)((Math.random() * n));		
 	}
 	
 	/**
@@ -75,7 +75,7 @@ public class Mundo {
 	public void generarCelulaAleatoria(){
 		int n;
 		n = generaPosicion(this.filasMundo() * this.columnasMundo());
-		this.superficie.llenarCasilla(n / this.filasMundo(), n % this.columnasMundo());
+		this.superficie.llenarCasilla(n / this.filasMundo(), n % this.columnasMundo());		
 	}
 	/**
 	 * Metodo que devuelve el alor entero positivo de las filas de la superficie

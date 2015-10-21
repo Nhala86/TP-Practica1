@@ -102,8 +102,8 @@ public class Controlador {
 	 */
 	private boolean validarDatos(int f, int c){
 		boolean valido = false;
-		if(f >= 0 && f < Constantes.NUMEROFILAS){
-			if(c >= 0 && c < Constantes.NUMEROCOLUMNAS){
+		if(f >= 0 && f < this.mundo.filasMundo()){ // las constantes solo se tocan una vez, el valor ya esta dado. No hay que poner las constantes
+			if(c >= 0 && c < this.mundo.columnasMundo()){
 				valido = true;
 			}
 		}

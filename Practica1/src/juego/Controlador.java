@@ -19,7 +19,7 @@ public class Controlador {
 	public void realizaSimulacion(){
 		boolean fin = false;
 		// Los valores del usuario deberian estar como validos
-        mundo.toString();
+                System.out.println(mundo.toString());
 		System.out.println("Comando > ");
 		String string = in.nextLine();
 		String [] palabras = string.split(" ");
@@ -27,7 +27,7 @@ public class Controlador {
 			//falta hacer mundo.evoluciona
 			if (string.equalsIgnoreCase("paso")){
 				mundo.evoluciona();
-				mundo.toString();
+				System.out.println(mundo.toString());
 			}
 			
 			else if (string.equalsIgnoreCase("iniciar")){
@@ -36,7 +36,7 @@ public class Controlador {
 				for (int i = 0; i < Constantes.NUMEROCELULAS; i++){
 					mundo.generarCelulaAleatoria();
 				}
-                mundo.toString();
+                System.out.println(mundo.toString());
 			}
 			
 			else if (palabras[0].equalsIgnoreCase("crearcelula")){
@@ -50,7 +50,7 @@ public class Controlador {
 				else {
 					System.out.println("Error, la posicion indicada no existe o esta ocupada");
 				}
-                mundo.toString();			
+                System.out.println(mundo.toString());			
              }
 			
 			else if (palabras[0].equalsIgnoreCase("eliminarcelula")){
@@ -67,7 +67,7 @@ public class Controlador {
 					}
 				}
 				else System.out.println("Los parametros pasados son incorrectos. Vuelva a introducirlos");
-                mundo.toString();
+                System.out.println(mundo.toString());
 			}
 			else if (string.equalsIgnoreCase("ayuda")){
 				System.out.println("POSIBLES COMANDOS:");
@@ -76,12 +76,12 @@ public class Controlador {
 				System.out.println("VACIAR: crea un mundo vacio");
 				System.out.println("CREARCELULA F C: crea una nueva celula en la posicion (f,c) si es posible");
 				System.out.println("ELIMINARCELULA F C: elimina una celula de la posicion (f,c) si es posible");
-                mundo.toString();
+                System.out.println(mundo.toString());
 			}
 			else if (string.equalsIgnoreCase ("vaciar")){
 				mundo.vaciar();
 				System.out.println("Vaciando la superficie....");
-                mundo.toString();
+                System.out.println(mundo.toString());
 			}
 			else if (string.equalsIgnoreCase("salir")){
 				System.out.println("Fin de la simulacion.....");
@@ -89,7 +89,7 @@ public class Controlador {
 			}
 			else {
 				System.out.println("Comando no valido, introduzca otro > ");
-                mundo.toString();
+                System.out.println(mundo.toString());
 			}
 		}
 	}
@@ -100,7 +100,7 @@ public class Controlador {
 	 * @return TRUE si los valores de fila y columna es valido
 	 * FALSE si los valores de fila y columna no son correctos, no estan dentro de los parametros definidos
 	 */
-	public boolean validarDatos(int f, int c){
+	private boolean validarDatos(int f, int c){
 		boolean valido = false;
 		if(f >= 0 && f < this.mundo.filasMundo()){
 			if(c >= 0 && c < this.mundo.columnasMundo()){

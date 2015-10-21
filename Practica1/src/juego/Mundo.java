@@ -26,8 +26,8 @@ public class Mundo {
 	 * Si no puede moverse, tiene un maximo de paso para poder hacerlo, si no muere
 	 */
 	public void evoluciona(){
-		for(int i = 0; i < Constantes.NUMEROFILAS; i++){ // Tienes que comparar con this.Superficie, pero todavia no tengo claro como llamarlo. Asi que de momento lo hago con la constante
-			for(int j = 0; j < Constantes.NUMEROCOLUMNAS; j++){
+		for(int i = 0; i < this.filasMundo(); i++){ // Tienes que comparar con this.Superficie, pero todavia no tengo claro como llamarlo. Asi que de momento lo hago con la constante
+			for(int j = 0; j < this.columnasMundo(); j++){
 				//if(){
 					
 				//}	
@@ -74,8 +74,8 @@ public class Mundo {
 	 */
 	public void generarCelulaAleatoria(){
 		int n;
-		n = generaPosicion(Constantes.NUMEROFILAS * Constantes.NUMEROCOLUMNAS);
-		this.superficie.llenarCasilla(n / Constantes.NUMEROFILAS, n % Constantes.NUMEROCOLUMNAS);
+		n = generaPosicion(this.filasMundo() * this.columnasMundo());
+		this.superficie.llenarCasilla(n / this.filasMundo(), n % this.columnasMundo());
 	}
 	/**
 	 * Metodo que devuelve el alor entero positivo de las filas de la superficie

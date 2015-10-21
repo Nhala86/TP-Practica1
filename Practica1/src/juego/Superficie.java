@@ -26,7 +26,11 @@ public class Superficie {
 		String matriz = "";
 		for(int i = 0; i < this.filas; i++){
     		for(int j = 0; j < this.columnas; j++){
-    			matriz = superficie[i][j].toString() + matriz ;
+    			if(!casillaVacia(i, j))	//No se puede llamar al metedo toString sin un objeto
+    			//matriz = superficie[i][j].toString() + matriz ; concatenacion inversa
+    				matriz += superficie[i][j].toString();
+    			else
+    				matriz += " - ";
 		    }
     		matriz = matriz + System.getProperty("line.separator");
 		}

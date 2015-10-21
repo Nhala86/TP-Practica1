@@ -25,9 +25,11 @@ public class Mundo {
 	 * Si la celula se puede mover a otra casilla aleatoria colindante a ella, entonces deja una nueva celula
 	 * Si no puede moverse, tiene un maximo de paso para poder hacerlo, si no muere
 	 */
+	//Uso las constantes que para eso estan, no hace falta crear funciones en superficie y demas para hacer algo que
+	//las constantes nos dan, pues el tamaño se crean con ellas y el programa no varia de tamaño
 	public void evoluciona(){
-		for(int i = 0; i < this.filasMundo(); i++){ // Tienes que comparar con this.Superficie, pero todavia no tengo claro como llamarlo. Asi que de momento lo hago con la constante
-			for(int j = 0; j < this.columnasMundo(); j++){
+		for(int i = 0; i < Constantes.NUMEROFILAS; i++){ // Tienes que comparar con this.Superficie, pero todavia no tengo claro como llamarlo. Asi que de momento lo hago con la constante
+			for(int j = 0; j < Constantes.NUMEROCOLUMNAS; j++){
 				//if(){
 					
 				//}	
@@ -72,11 +74,18 @@ public class Mundo {
 	/**
 	 * Genera una celula en la superficie de forma aleatoria
 	 */
+	//Uso las constantes que para eso estan, no hace falta crear funciones en superficie y demas para hacer algo que
+	//las constantes nos dan, pues el tamaño se crean con ellas y el programa no varia de tamaño
 	public void generarCelulaAleatoria(){
 		int n;
-		n = generaPosicion(this.filasMundo() * this.columnasMundo());
-		this.superficie.llenarCasilla(n / this.filasMundo(), n % this.columnasMundo());
+		//Las posiciones van de 0 a n-1
+		n = generaPosicion((Constantes.NUMEROFILAS * Constantes.NUMEROCOLUMNAS) - 1);
+		superficie.llenarCasilla(n % Constantes.NUMEROFILAS, n % Constantes.NUMEROCOLUMNAS);
 	}
+	
+	
+	//Todo esto de abajo sobra, no tiene sentido que se use, para eso estan las constantes
+	
 	/**
 	 * Metodo que devuelve el alor entero positivo de las filas de la superficie
 	 * @return valor entero positivo de las filas de la Superficie en el Mundo
@@ -91,5 +100,6 @@ public class Mundo {
 	public int columnasMundo(){
 		return this.superficie.columnasSupeficie();
 	}
+	
 }
 

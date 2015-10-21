@@ -22,12 +22,11 @@ public class Superficie {
      * @return La matriz como un string
      */
 	public String toString(){
-		//String matriz = " "; inicializar a campo vacio
 		String matriz = "";
 		for(int i = 0; i < this.filas; i++){
     		for(int j = 0; j < this.columnas; j++){
-    			if(!casillaVacia(i, j))	//No se puede llamar al metedo toString sin un objeto
-    			//matriz = superficie[i][j].toString() + matriz ; concatenacion inversa
+    			if(!casillaVacia(i, j))	
+    				//Añadir espacios en la superficie porque queda feo si hay 2 celulas juntas
     				matriz += superficie[i][j].toString();
     			else
     				matriz += " - ";
@@ -55,7 +54,7 @@ public class Superficie {
 	 * @return TRUE si la casilla esta vacia. FALSE para el caso contrario
 	 */
 	public boolean casillaVacia(int f, int c){
-		return (this.superficie[f][c] == null);
+		return this.superficie[f][c] == null;
 	}
 
 	/**
@@ -93,12 +92,18 @@ public class Superficie {
 		return ok;
 	}
 	
+	
+	
+	
+	
+	
 	/**
 	 * Metodo que indica donde se encuentra la celula 
 	 * @param f valor entero positivo acotado en un rango valido del numero de filas
 	 * @param c valor entero positivo acotado en un rango valido del numero de columnas
 	 * @return entero de la posicion donde se encuentra la celula
 	 */	
+	//A puri no le va a gustar esto (muchos ifs)
 	private int posicionCelula(int f, int c){
 		int posicion;
 		if(f == 0 && c == 0)
@@ -123,6 +128,7 @@ public class Superficie {
 	/**
 	 * Metodo que mueve la celula segun la posicion donde se encuentra
 	 */
+	//A puri no le va a gustar esto
 	public void moverCelula(int f, int c){
 		int x = posicionCelula(f, c);
 		switch(x){
@@ -147,6 +153,8 @@ public class Superficie {
 				break;			
 		}
 	}
+	//Todo esto de abajo sobra, no tiene sentido que se use, para eso estan las constantes
+	
 	/**
 	 * Metodo que devuelve el valor entero positivo de las filas de la Superficie
 	 * @return valor entero positivo de las filas 

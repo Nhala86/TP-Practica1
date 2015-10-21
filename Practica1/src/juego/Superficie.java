@@ -22,7 +22,8 @@ public class Superficie {
      * @return La matriz como un string
      */
 	public String toString(){
-		String matriz = " ";
+		//String matriz = " "; inicializar a campo vacio
+		String matriz = "";
 		for(int i = 0; i < this.filas; i++){
     		for(int j = 0; j < this.columnas; j++){
     			matriz = superficie[i][j].toString() + matriz ;
@@ -141,6 +142,20 @@ public class Superficie {
 			case 9:
 				break;			
 		}
+	}
+	/**
+	 * Metodo que devuelve el valor entero positivo de las filas de la Superficie
+	 * @return valor entero positivo de las filas 
+	 */
+	public int filasSuperficie(){
+		return this.filas;
+	}
+	/**
+	 * Metodo que devuelve el valor entero positivo de las columnas de la Superficie
+	 * @return valor entero positivo de las columnas 
+	 */
+	public int columnasSupeficie(){
+		return this.columnas;
 	}
 	
 }

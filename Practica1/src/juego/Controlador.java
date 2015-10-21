@@ -56,14 +56,17 @@ public class Controlador {
 			else if (palabras[0].equalsIgnoreCase("eliminarcelula")){
 				int f = new Integer (palabras[1]);
 				int c = new Integer (palabras[2]);
-				if (mundo.eliminarCelulaSuperficie(f, c)){
-					System.out.print("Eliminamos la celula en: (");
-					System.out.print( palabras[1]);  System.out.print(",");
-					System.out.print(palabras[2]);   System.out.println(")");
+				if(validarDatos(f, c)){
+					if (mundo.eliminarCelulaSuperficie(f, c)){
+						System.out.print("Eliminamos la celula en: (");
+						System.out.print(palabras[1]);  System.out.print(",");
+						System.out.print(palabras[2]);   System.out.println(")");
+					}
+					else {
+						System.out.println("Error, la posicion indicada no existe o esta ocupada");
+					}
 				}
-				else {
-					System.out.println("Error, la posicion indicada no existe o esta ocupada");
-				}
+				else System.out.println("Los parametros pasados son incorrectos. Vuelva a introducirlos");
                 mundo.toString();
 			}
 			else if (string.equalsIgnoreCase("ayuda")){
@@ -90,4 +93,21 @@ public class Controlador {
 			}
 		}
 	}
+	/**
+	 * Metodo que valida que los valores de fila y columna que pasa el usuario son validos
+	 * @param f valores enteros positivos de fila
+	 * @param c valores enteros positivos de columna
+	 * @return TRUE si los valores de fila y columna es valido
+	 * FALSE si los valores de fila y columna no son correctos, no estan dentro de los parametros definidos
+	 */
+	public boolean validarDatos(int f, int c){
+		boolean valido = false;
+		if(f >= 0 && f < this.mundo.filasMundo()){
+			if(c >= 0 && c < this.mundo.columnasMundo()){
+				valido = true;
+			}
+		}
+		return valido;
+	}
+	
 }

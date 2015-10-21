@@ -28,9 +28,9 @@ public class Mundo {
 	public void evoluciona(){
 		for(int i = 0; i < Constantes.NUMEROFILAS; i++){ // Tienes que comparar con this.Superficie, pero todavia no tengo claro como llamarlo. Asi que de momento lo hago con la constante
 			for(int j = 0; j < Constantes.NUMEROCOLUMNAS; j++){
-				if(){
+				//if(){
 					
-				}	
+				//}	
 			}
 		}	
 	}
@@ -77,6 +77,19 @@ public class Mundo {
 		n = generaPosicion(Constantes.NUMEROFILAS * Constantes.NUMEROCOLUMNAS);
 		this.superficie.llenarCasilla(n / Constantes.NUMEROFILAS, n % Constantes.NUMEROCOLUMNAS);
 	}
-
+	/**
+	 * Metodo que devuelve el alor entero positivo de las filas de la superficie
+	 * @return valor entero positivo de las filas de la Superficie en el Mundo
+	 */
+	public int filasMundo(){
+		return this.superficie.filasSuperficie();
+	}
+	/**
+	 * Metodo que devuelve el alor entero positivo de las columnas de la superficie
+	 * @return valor entero positivo de las columnas de la Superficie en el Mundo
+	 */
+	public int columnasMundo(){
+		return this.superficie.columnasSupeficie();
+	}
 }
 

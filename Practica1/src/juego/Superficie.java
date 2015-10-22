@@ -65,10 +65,6 @@ public class Superficie {
 	 */
 	public boolean vaciarCasilla(int f, int c){
 		boolean ok = false;
-		//De esta forma funciona 100%, solo con casilla vacia podria darse fallo si pasas por parametro un numero que no
-		// este en el rango de las casillas, y que no funcione el programa
-		// NO SE DEBE pasar un parametro incorrecto, esto ya debe comprobarlo el controlador cuando le pide al usuario el numero
-		// if(!casillaVacia(f, c) && f >= 0 && c >= 0 && f < Constantes.NUMEROFILAS && c < Constantes.NUMEROCOLUMNAS){
 		if(!casillaVacia(f, c)){
 			this.superficie[f][c] = null;
 			ok = true;
@@ -84,7 +80,6 @@ public class Superficie {
 	*/
 	public boolean llenarCasilla(int f, int c){
 		boolean ok = false;
-		//if(casillaVacia(f, c) && f >= 0 && c >= 0 && f < Constantes.NUMEROFILAS && c < Constantes.NUMEROCOLUMNAS){
 		if(casillaVacia(f, c)){
 			this.superficie[f][c] = new Celula();
 			ok = true;
@@ -98,37 +93,54 @@ public class Superficie {
 	
 	
 	/**
-	 * Metodo que indica donde se encuentra la celula 
+	 * Metodo que indica mediante un entero una posicion relativa de la celula en la superficie
+	 * para determinar el caso particular de la misma en su tratamiento al moverse. 
+	 * 1 -- 2 -- 3
+	 * |	|	 |
+	 * 4 --	5 -- 6
+	 * |	|	 |
+	 * 7 -- 8 -- 9
 	 * @param f valor entero positivo acotado en un rango valido del numero de filas
 	 * @param c valor entero positivo acotado en un rango valido del numero de columnas
 	 * @return entero de la posicion donde se encuentra la celula
 	 */	
-	//A puri no le va a gustar esto (muchos ifs)
+
 	private int posicionCelula(int f, int c){
 		int posicion;
-		if(f == 0 && c == 0)
-			posicion = 1; // esquina superior izquierda
-		else if(f == 0 && (c > 0 && c < this.columnas -1))
-			posicion = 2; // lado superior
-		else if(f == 0 && c == this.columnas -1)
-			posicion = 3; // esquina superior derecha
-		else if((f > 0 && f < this.filas -1)&& c == 0)
-			posicion = 4; // lado izquierdo
-		else if ((f > 0 && f < this.filas -1) && c == this.columnas -1)
-			posicion = 6; // lado derecho
-		else if(f == this.filas -1 && c == 0)
-			posicion = 7; // esquina inferior izquierda
-		else if(f == this.filas -1 && (c > 0 && c < this.columnas -1))
-			posicion = 8; // lado inferior
-		else if (f == this.filas -1 && c == this.columnas -1)
-			posicion = 9; // esquina inferior derecha		 
-		else posicion = 5; // posiciones centrales		
+		
+		if(f == 0){
+			if(c == 0)
+				posicion = 1;
+			else if(c >0 && c < this.columnas -1)
+				posicion = 2;
+			else
+				posicion = 3;
+		}
+		else if(f >0 && f < this.filas-1){
+			if(c == 0)
+				posicion = 4;
+			else if(c >0 && c < this.columnas -1)
+				posicion = 5;
+			else
+				posicion = 6;
+		}
+		else{
+			if(c == 0)
+				posicion = 7;
+			else if(c >0 && c < this.columnas -1)
+				posicion = 8;
+			else
+				posicion = 9;
+		}
 		return posicion;
-	} 
+		}
+	
 	/**
 	 * Metodo que mueve la celula segun la posicion donde se encuentra
+	 * hay que considerar los 9 casos especificos de una superficie cuadrada
+	 * y tratar cada uno de manera independiente. Para ello se estudiar previamente
+	 * la posicion de la celula a mover seguido de su caracteristico metodo de movimiento.
 	 */
-	//A puri no le va a gustar esto
 	public void moverCelula(int f, int c){
 		int x = posicionCelula(f, c);
 		switch(x){

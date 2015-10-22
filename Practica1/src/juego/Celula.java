@@ -1,18 +1,25 @@
 package juego;
 
 public class Celula {
-	private int noMovimiento;
-	private int movimiento;
+	private int pasosSinMover;
+	private int pasosReproduccion;
 	
-	// Crea una celula con movimiento = 0 y con numero de movimientos antes de morir = 0
+	/**
+	 * Metodo constructor generico de la clase Celula definido para las celulas basicas del juego
+	 */
 	public Celula(){
-		this.noMovimiento = 1;
-		this.movimiento = 0;
+		this.pasosSinMover = Constantes.MAX_PASOS_SIN_MOVER;
+		this.pasosReproduccion = Constantes.PASOS_REPRODUCCION;
 	}
 	
-	public Celula(int noMovimiento, int movimiento){
-		this.noMovimiento = noMovimiento;
-		this.movimiento = movimiento;
+	/**
+	 * Metodo constructor especifico de la calse Celula definido para celulas con atributos especificos
+	 * @param pasosSinMover
+	 * @param pasosReproduccion
+	 */
+	public Celula(int pasosSinMover, int pasosReproduccion){
+		this.pasosSinMover = pasosSinMover;
+		this.pasosReproduccion = pasosReproduccion;
 	}
 	
 	/**
@@ -20,7 +27,7 @@ public class Celula {
      * @return Una cadena con los dos parametros numericos de la celula, separados por un guion
      */
     public String toString(){
-       return this.noMovimiento + "-" + this.movimiento;
+       return this.pasosSinMover + "-" + this.pasosReproduccion;
     }
 
 }

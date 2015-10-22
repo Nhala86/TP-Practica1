@@ -126,8 +126,8 @@ public class Controlador {
 	 */
 	private boolean validarDatos(int f, int c){
 		boolean valido = false;
-		if(f >= 0 && f < Constantes.NUMEROFILAS){
-			if(c >= 0 && c < Constantes.NUMEROCOLUMNAS){
+		if(f >= 0 && f < this.mundo.filasMundo()){
+			if(c >= 0 && c < this.mundo.columnasMundo()){
 				valido = true;
 			}
 		}

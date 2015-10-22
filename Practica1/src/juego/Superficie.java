@@ -25,9 +25,10 @@ public class Superficie {
 		String matriz = "";
 		for(int i = 0; i < this.filas; i++){
     		for(int j = 0; j < this.columnas; j++){
-    			if(!casillaVacia(i, j))	
-    				//Añadir espacios en la superficie porque queda feo si hay 2 celulas juntas
-    				matriz += superficie[i][j].toString();
+    			matriz += ' '; 
+    			if(!casillaVacia(i, j)){    				
+    				matriz += superficie[i][j].toString();    				
+    			}
     			else
     				matriz += " - ";
 		    }
@@ -78,19 +79,14 @@ public class Superficie {
 	* @param c valor entero positivo acotado en un rango valido del numero de columnas
 	* @return TRUE si lleno la casilla. FALSE para el caso contrario
 	*/
-	public boolean llenarCasilla(int f, int c){
+	public boolean llenarCasilla(int f, int c, Celula celula){
 		boolean ok = false;
 		if(casillaVacia(f, c)){
-			this.superficie[f][c] = new Celula();
+			this.superficie[f][c] = celula;
 			ok = true;
 		}
 		return ok;
-	}
-	
-	
-	
-	
-	
+	}	
 	
 	/**
 	 * Metodo que indica mediante un entero una posicion relativa de la celula en la superficie
@@ -104,7 +100,6 @@ public class Superficie {
 	 * @param c valor entero positivo acotado en un rango valido del numero de columnas
 	 * @return entero de la posicion donde se encuentra la celula
 	 */	
-
 	private int posicionCelula(int f, int c){
 		int posicion;
 		
@@ -144,8 +139,7 @@ public class Superficie {
 	public void moverCelula(int f, int c){
 		int x = posicionCelula(f, c);
 		switch(x){
-			case 1:
-				
+			case 1:					
 				break;
 			case 2:
 				break;
@@ -165,21 +159,39 @@ public class Superficie {
 				break;			
 		}
 	}
-	//Todo esto de abajo sobra, no tiene sentido que se use, para eso estan las constantes
-	
+		
 	/**
 	 * Metodo que devuelve el valor entero positivo de las filas de la Superficie
 	 * @return valor entero positivo de las filas 
 	 */
-	public int filasSuperficie(){
+	public int getFilas(){
 		return this.filas;
 	}
 	/**
 	 * Metodo que devuelve el valor entero positivo de las columnas de la Superficie
 	 * @return valor entero positivo de las columnas 
 	 */
-	public int columnasSupeficie(){
+	public int getColumnas(){
 		return this.columnas;
+	}
+
+	public int decrementarRep(int f, int c){
+		return superficie[f][c].decrementarRep();
+	}
+
+	public int decrementarSinMover(int f, int c) {
+		return superficie[f][c].decrementarSinMover();
+		
+	}
+
+	public int getReproducir(int f, int c) {
+		
+		return superficie[f][c].getReproducir();
+	}
+
+	public int getSinMover(int f, int c) {
+		
+		return superficie[f][c].getSinMover();
 	}
 	
 }

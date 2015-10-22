@@ -29,5 +29,20 @@ public class Celula {
     public String toString(){
        return this.pasosSinMover + "-" + this.pasosReproduccion;
     }
+    public int decrementarRep(){
+    	return this.pasosReproduccion--;
+    }
 
+	public int decrementarSinMover() {
+		return this.pasosSinMover--;
+	}
+
+	public int getReproducir() {
+		return this.pasosReproduccion;
+	}
+
+	public int getSinMover() {
+		
+		return this.pasosSinMover;
+	}
 }

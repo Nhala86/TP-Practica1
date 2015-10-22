@@ -41,9 +41,7 @@ public class Controlador {
 					mundo.vaciar();
 				}
 				//Como se vuelve a llenar la superficie, no toco el bool vacio
-				for (int i = 0; i < Constantes.NUMEROCELULAS; i++){
-					mundo.generarCelulaAleatoria();
-				}
+				mundo.generarCelulas();
                 System.out.println(mundo.toString());
 			}
 			
@@ -126,8 +124,8 @@ public class Controlador {
 	 */
 	private boolean validarDatos(int f, int c){
 		boolean valido = false;
-		if(f >= 0 && f < this.mundo.filasMundo()){
-			if(c >= 0 && c < this.mundo.columnasMundo()){
+		if(f >= 0 && f < this.mundo.getFilas()){
+			if(c >= 0 && c < this.mundo.getColumnas()){
 				valido = true;
 			}
 		}

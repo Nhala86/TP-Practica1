@@ -11,9 +11,19 @@ public class Mundo {
 	 */
 	public Mundo(){
 		this.superficie = new Superficie(Constantes.NUMEROFILAS, Constantes.NUMEROCOLUMNAS);
-		for (int i = 0; i < Constantes.NUMEROCELULAS; i++){
-			generarCelulaAleatoria();
-		}
+		this.generarCelulas();
+	}
+	
+	public void generarCelulas(){
+	 int contCelulas = 0;
+	 while (contCelulas < Constantes.NUMEROCELULAS){
+		 int f = (int) (Math.random()*Constantes.NUMEROFILAS);
+		 int c = (int) (Math.random()*Constantes.NUMEROCOLUMNAS);
+		 if (this.superficie.casillaVacia(f, c)) {
+			 this.superficie.llenarCasilla(f, c, new Celula());
+			 contCelulas++;
+		 }
+	 }
 	}
 	
 	public String toString(){
@@ -26,11 +36,45 @@ public class Mundo {
 	 * Si no puede moverse, tiene un maximo de paso para poder hacerlo, si no muere
 	 */
 	public void evoluciona(){
-		for(int i = 0; i < this.filasMundo(); i++){ 
-			for(int j = 0; j < this.columnasMundo(); j++){
-				//if(){
+		boolean [][] movido = new boolean [this.getFilas()][this.getColumnas()];
+		for(int i = 0; i < this.getFilas(); i++){
+    		for(int j = 0; j < this.getColumnas(); j++){
+    			movido[i][j] = false;
+		    }
+		}		
+		for(int i = 0; i < this.getFilas(); i++){ 
+			for(int j = 0; j < this.getColumnas(); j++){
+				if (superficie.getSinMover(i,j) < 0){// morir
+					superficie.vaciarCasilla(i, j);
+				}
+				else if(!movido[i][j]){
+					//se puede mover (TIENE SITIO LIBRE)
+					if (){
+						superficie.decrementarRep(i, j);
+						if (superficie.getReproducir(i,j) < 0){// reproducirse
+							System.out.println("Movimiento de (i,j) a (f,c)");
+							//Mover celula (contador f,c : no i,j)
+							superficie.llenarCasilla(i, j, new Celula());
+							
+						}
+						else {
+							//Mover celula
+						}
+						//Nueva posicion a la que se mueve la celula
+						movido[][]= true;
+					}
+					else {
+						//Si no se puede mover y esta por reproducirse, la celula muere
+						if (superficie.getReproducir(i,j) < 0){ //muere
+							superficie.vaciarCasilla(i, j);
+						}
+						else {
+							superficie.decrementarSinMover(i, j);
+						}
+					}
 					
-				//}	
+				}
+				
 			}
 		}	
 	}
@@ -47,7 +91,7 @@ public class Mundo {
 	 * @return TRUE se ha hecho el proceso de crear la celula
 	 */
 	public boolean crearCelulaSuperficie(int f, int c){ 
-		return superficie.llenarCasilla(f, c);  
+		return superficie.llenarCasilla(f, c, new Celula());  
 	}
 	
 	/**
@@ -61,39 +105,18 @@ public class Mundo {
 	}
 	
 	/**
-	 * Genera un numero aleatorio entre 0 y n - 1.
-	 * @param n Valor entero positivo que limita el rango del numero aleatorio
-	 * @return Un entero entre 0 y n - 1
-	 */
-	private static int generaPosicion(int n){
-		return (int)((Math.random() * n));		
-	}
-	
-	/**
-	 * Procedimiento para generar una celula en una posicion libre de la superficie de forma aleatoria
-	 */
-	public void generarCelulaAleatoria(){
-		int n = generaPosicion((this.filasMundo() * this.columnasMundo()) - 1);
-		
-		while(!crearCelulaSuperficie(n % this.filasMundo(), n % this.columnasMundo())){
-			n = generaPosicion((this.filasMundo() * this.columnasMundo()) - 1);
-		}
-	}
-	
-	
-	/**
 	 * Metodo que devuelve el alor entero positivo de las filas de la superficie
 	 * @return valor entero positivo de las filas de la Superficie en el Mundo
 	 */
-	public int filasMundo(){
-		return this.superficie.filasSuperficie();
+	public int getFilas(){
+		return this.superficie.getFilas();
 	}
 	/**
 	 * Metodo que devuelve el alor entero positivo de las columnas de la superficie
 	 * @return valor entero positivo de las columnas de la Superficie en el Mundo
 	 */
-	public int columnasMundo(){
-		return this.superficie.columnasSupeficie();
+	public int getColumnas(){
+		return this.superficie.getColumnas();
 	}
 	
 }

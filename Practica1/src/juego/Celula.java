@@ -42,7 +42,6 @@ public class Celula {
 	}
 
 	public int getSinMover() {
-		
 		return this.pasosSinMover;
 	}
 }

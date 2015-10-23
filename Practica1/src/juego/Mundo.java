@@ -50,18 +50,23 @@ public class Mundo {
 				else if(!movido[i][j]){
 					//se puede mover (TIENE SITIO LIBRE)
 					if (){
+						int f;
+						int c;
 						superficie.decrementarRep(i, j);
 						if (superficie.getReproducir(i,j) < 0){// reproducirse
 							System.out.println("Movimiento de (i,j) a (f,c)");
 							//Mover celula (contador f,c : no i,j)
+							//Obtener la nueva posicion (f,c)
+							moverCelula (f, c, i, j, new Celula(superficie.getSinMover(i, j) , superficie.getReproducir(i, j)));
 							superficie.llenarCasilla(i, j, new Celula());
 							
 						}
 						else {
 							//Mover celula
+							moverCelula (f, c, i, j, new Celula(superficie.getSinMover(i, j) , superficie.getReproducir(i, j)));
 						}
 						//Nueva posicion a la que se mueve la celula
-						movido[][]= true;
+						movido[f][c]= true;
 					}
 					else {
 						//Si no se puede mover y esta por reproducirse, la celula muere
@@ -78,6 +83,20 @@ public class Mundo {
 			}
 		}	
 	}
+	/**
+	 * Mueve la celula creandola en la nueva posicion con los atributos SinMover y Reproducir que tenia y la elimina 
+	 * de la antigua posicion en la que estaba
+	 * @param f Entero que contiene la fila de la nueva posicion de la celula
+	 * @param c Entero que contiene la columna de la nueva posicion de la celula
+	 * @param i Entero que contiene la fila de la antigua posicion de la celula
+	 * @param j Entero que contiene la columna de la antigua posicion de la celula
+	 * @param celula Contructora con argumentos que sera la nueva celula
+	 */
+	private void moverCelula(int f, int c, int i, int j, Celula celula) {
+		superficie.llenarCasilla(f, c, celula);
+		superficie.vaciarCasilla(i, j);
+	}
+
 	/**
 	 * Metodo que vacia el tablero de celulas
 	 */

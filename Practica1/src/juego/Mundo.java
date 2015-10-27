@@ -44,7 +44,8 @@ public class Mundo {
 		}		
 		for(int i = 0; i < this.getFilas(); i++){ 
 			for(int j = 0; j < this.getColumnas(); j++){
-				if (superficie.getSinMover(i,j) < 0){// morir
+				// Hay que enseñarselo a Puri, porque tantos if and else juntos no le van a gustar
+				if (superficie.getSinMover(i,j) < 0){// morir // esto en todo caso seria un while, porque primero tiene que recorrer la matriz entera eliminando todas las celulas muertas, si no encontrara una que se puede mover y no la podra mover porque la casilla esta ocupada con una muerta que todavia no ha sido eliminada
 					superficie.vaciarCasilla(i, j);
 				}
 				else if(!movido[i][j]){

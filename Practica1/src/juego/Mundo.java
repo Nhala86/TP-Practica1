@@ -1,6 +1,6 @@
 package juego;
 
-public class Mundo {
+public class Mundo{
 	
 	private Superficie superficie;
 		
@@ -17,8 +17,8 @@ public class Mundo {
 	public void generarCelulas(){
 	 int contCelulas = 0;
 	 while (contCelulas < Constantes.NUMEROCELULAS){
-		 int f = (int) (Math.random()*Constantes.NUMEROFILAS);
-		 int c = (int) (Math.random()*Constantes.NUMEROCOLUMNAS);
+		 int f = (int) (Math.random()* Constantes.NUMEROFILAS);
+		 int c = (int) (Math.random()* Constantes.NUMEROCOLUMNAS);
 		 if (this.superficie.casillaVacia(f, c)) {
 			 this.superficie.llenarCasilla(f, c, new Celula());
 			 contCelulas++;
@@ -35,54 +35,41 @@ public class Mundo {
 	 * Si la celula se puede mover a otra casilla aleatoria colindante a ella, entonces deja una nueva celula
 	 * Si no puede moverse, tiene un maximo de paso para poder hacerlo, si no muere
 	 */
-	public void evoluciona(){
-		boolean [][] movido = new boolean [this.getFilas()][this.getColumnas()];
+	public void evoluciona(){		
+		int f = 0, c = 0;
+		boolean [][] ocupado = new boolean [this.getFilas()][this.getColumnas()];
+		morir(f, c);
 		for(int i = 0; i < this.getFilas(); i++){
     		for(int j = 0; j < this.getColumnas(); j++){
-    			movido[i][j] = false;
+    			ocupado[i][j] = false;
 		    }
-		}		
-		for(int i = 0; i < this.getFilas(); i++){ 
-			for(int j = 0; j < this.getColumnas(); j++){
-				// Hay que enseñarselo a Puri, porque tantos if and else juntos no le van a gustar
-				if (superficie.getSinMover(i,j) < 0){// morir // esto en todo caso seria un while, porque primero tiene que recorrer la matriz entera eliminando todas las celulas muertas, si no encontrara una que se puede mover y no la podra mover porque la casilla esta ocupada con una muerta que todavia no ha sido eliminada
-					superficie.vaciarCasilla(i, j);
-				}
-				else if(!movido[i][j]){
-					//se puede mover (TIENE SITIO LIBRE)
-					if (){
-						int f;
-						int c;
-						superficie.decrementarRep(i, j);
-						if (superficie.getReproducir(i,j) < 0){// reproducirse
-							System.out.println("Movimiento de (i,j) a (f,c)");
-							//Mover celula (contador f,c : no i,j)
-							//Obtener la nueva posicion (f,c)
-							moverCelula (f, c, i, j, new Celula(superficie.getSinMover(i, j) , superficie.getReproducir(i, j)));
-							superficie.llenarCasilla(i, j, new Celula());
-							
-						}
-						else {
-							//Mover celula
-							moverCelula (f, c, i, j, new Celula(superficie.getSinMover(i, j) , superficie.getReproducir(i, j)));
-						}
-						//Nueva posicion a la que se mueve la celula
-						movido[f][c]= true;
-					}
-					else {
-						//Si no se puede mover y esta por reproducirse, la celula muere
-						if (superficie.getReproducir(i,j) < 0){ //muere
-							superficie.vaciarCasilla(i, j);
-						}
-						else {
-							superficie.decrementarSinMover(i, j);
-						}
-					}
-					
-				}
-				
+		}
+		
+		
+	}
+	/**
+	 * Recorre la matriz y elimina todas las celulas que deben morir, dejando su casilla libre
+	 * @param f
+	 * @param c
+	 */
+	private void morir(int f, int c){
+		while(f < this.getFilas()&& c < this.getColumnas()){
+			if (superficie.getSinMover(f, c) < 0){
+				superficie.vaciarCasilla(f, c);
 			}
-		}	
+		}
+	}
+	// Como deberia ser buscar los vecinos, hay que crear el array de casilla y su contador
+	public int buscarVecinos(int f, int c){ 
+		for(int i = 0; i < incrFila.length; i++){
+			int nf = f + incrFila[1];
+			int nc = c + incrColumna[1];
+			if(indicesCorrectos(nf, nc) && this.superficie.casillaVacia(nf, nc)){
+				vectorCasillas[cout] = new Casilla(nf, nc);
+				cont ++;
+			}
+		}
+		return vectorCasillas[aleatorio]; // hay que crear un metodo que cree un aleatorio de f y c
 	}
 	/**
 	 * Mueve la celula creandola en la nueva posicion con los atributos SinMover y Reproducir que tenia y la elimina 
@@ -125,14 +112,14 @@ public class Mundo {
 	}
 	
 	/**
-	 * Metodo que devuelve el alor entero positivo de las filas de la superficie
+	 * Metodo que devuelve el valor entero positivo de las filas de la superficie
 	 * @return valor entero positivo de las filas de la Superficie en el Mundo
 	 */
 	public int getFilas(){
 		return this.superficie.getFilas();
 	}
 	/**
-	 * Metodo que devuelve el alor entero positivo de las columnas de la superficie
+	 * Metodo que devuelve el valor entero positivo de las columnas de la superficie
 	 * @return valor entero positivo de las columnas de la Superficie en el Mundo
 	 */
 	public int getColumnas(){

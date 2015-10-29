@@ -23,24 +23,37 @@ public class Celula {
 	}
 	
 	/**
-     * Coge los valores numericos de noMovimiento y movimiento y los convierte en una cadena para mostrar
+     * Coge los valores numericos de pasosSinMover y pasosReproduccion y los convierte en una cadena para mostrar
      * @return Una cadena con los dos parametros numericos de la celula, separados por un guion
      */
     public String toString(){
        return this.pasosSinMover + "-" + this.pasosReproduccion;
     }
+    /**
+     * 
+     * @return
+     */
     public int decrementarRep(){
     	return this.pasosReproduccion--;
     }
-
+    /**
+     * 
+     * @return
+     */
 	public int decrementarSinMover() {
 		return this.pasosSinMover--;
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public int getReproducir() {
 		return this.pasosReproduccion;
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public int getSinMover() {
 		return this.pasosSinMover;
 	}

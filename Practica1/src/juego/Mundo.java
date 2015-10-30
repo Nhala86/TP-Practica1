@@ -1,8 +1,12 @@
 package juego;
 
+
+import java.util.Arrays;
+
 public class Mundo{
 	
 	private Superficie superficie;
+
 		
 	/**
 	 * La clase constructor de Mundo, genera una superficie con una longitud
@@ -36,40 +40,120 @@ public class Mundo{
 	 * Si no puede moverse, tiene un maximo de paso para poder hacerlo, si no muere
 	 */
 	public void evoluciona(){		
-		int f = 0, c = 0;
-		boolean [][] ocupado = new boolean [this.getFilas()][this.getColumnas()];
-		morir(f, c);
+		boolean [][] movido = new boolean [this.getFilas()][this.getColumnas()];
 		for(int i = 0; i < this.getFilas(); i++){
     		for(int j = 0; j < this.getColumnas(); j++){
-    			ocupado[i][j] = false;
+    			movido[i][j] = false;
 		    }
 		}
-		
-		
+		for(int i = 0; i < this.getFilas(); i++){
+    		for(int j = 0; j < this.getColumnas(); j++){
+    			if (!superficie.casillaVacia(i, j) && !morir(i, j) && !movido[i][j]){
+    				//Obtener la nueva posicion (f,c)
+    				int posiciones[] = posicionesVacias(i,j);
+    				//Se puede mover (TIENE SITIO LIBRE)
+					if (posiciones[0] != -1){
+						int x = (int) (Math.random() * posiciones.length);
+						int f, c;
+						if (x % 2 == 0){
+							f = posiciones[x];
+							c = posiciones[x + 1];
+						}
+						else {
+							f = posiciones[x - 1];
+							c = posiciones[x];
+						}
+    					superficie.decrementarRep(i, j);
+    					if (superficie.getReproducir(i,j) < 0){// reproducirse
+    						System.out.println("Movimiento de (" + i + "," + j + ") a (" + f + "," + c + ")");
+	    					moverCelula (f, c, i, j, new Celula(superficie.getSinMover(i, j) , Constantes.PASOS_REPRODUCCION));
+	    					superficie.llenarCasilla(i, j, new Celula());
+	    					System.out.println("Nace nueva celula en (" + i + "," + j + ")" + " cuyo padre ha sido (" + f + "," + c + ")");
+    					}
+    					else {
+    						System.out.println("Movimiento de (" + i + "," + j + ") a (" + f + "," + c + ")");
+	    					moverCelula (f, c, i, j, new Celula(superficie.getSinMover(i, j) , superficie.getReproducir(i, j)));
+    					}
+    					//Nueva posicion a la que se mueve la celula
+    					movido[f][c]= true;
+    				}
+    				else {
+	    				//Si no se puede mover y esta por reproducirse, la celula muere
+	    				if (superficie.getReproducir(i,j) < 0){ //muere
+	    					superficie.vaciarCasilla(i, j);
+	    					System.out.println("Muere la celula de la casilla (" + i + "," + j + ") por no poder reproducirse");
+	    				}
+    					else {
+    						superficie.decrementarSinMover(i, j);
+    					}
+    				}			
+    			}
+			}
+		}
 	}
+	
 	/**
-	 * Recorre la matriz y elimina todas las celulas que deben morir, dejando su casilla libre
-	 * @param f
-	 * @param c
+	 * Elimina la celula si cumple la condicion de que SinMovimientos sea menor que 0, dejando su casilla libre
+	 * @param f Entero que contiene la fila de la celula
+	 * @param c Entero que contiene la columna de la celula
+	 * @return TRUE Si se han cumplido las condiciones y se elimina la celula, FALSE si no se cumplen
 	 */
-	private void morir(int f, int c){
-		while(f < this.getFilas()&& c < this.getColumnas()){
-			if (superficie.getSinMover(f, c) < 0){
-				superficie.vaciarCasilla(f, c);
-			}
+	private boolean morir(int f, int c){
+		boolean hecho = false;
+		if (superficie.getSinMover(f, c) == 0){
+			superficie.vaciarCasilla(f, c);
+			System.out.println("Muere la celula de la casilla (" + f + "," + c + ") por inactividad");
+			hecho = true;
 		}
+		return hecho;
 	}
-	// Como deberia ser buscar los vecinos, hay que crear el array de casilla y su contador
-	public int buscarVecinos(int f, int c){ 
-		for(int i = 0; i < incrFila.length; i++){
-			int nf = f + incrFila[1];
-			int nc = c + incrColumna[1];
-			if(indicesCorrectos(nf, nc) && this.superficie.casillaVacia(nf, nc)){
-				vectorCasillas[cout] = new Casilla(nf, nc);
-				cont ++;
+	
+	/**
+	 * Busco las posiciones vacias que hay alrededor de la celula que se pasa por parametro
+	 * @param f Entero que representa la fila
+	 * @param c Entero que representa la columna
+	 * @return Un array de enteros de longitud (casillas vacias * 2) con las posiciones vacias (estan agrupadas de 2 en 2 
+	 * dentro del array), si no posiciones vacias lo indico con el -1 como numero de control
+	 */
+	private int[] posicionesVacias(int f, int c){ 
+		int cont=0;
+		//16 = 8 * 2, guardo las nuevas posiciones en 2 casillas consecutivas, y 8 son las posibles posiciones vacias
+		//Es la unica forma facil que se me ocurre de guardar las 2 posiciones
+		int [] casillas = new int[16];
+		int [] fila = {-1, 0, 1};
+		for(int i = 0; i < 3; i++){
+			for(int j = 0; j < 3; j++){
+				int nf = f + fila[i];
+				int nc = c + fila[j];
+				if (nf < 0){
+					nf = superficie.getFilas() - 1;
+				}
+				if (nf >= superficie.getFilas()){
+					nf = 0;
+				}
+				if (nc < 0){
+					nc = superficie.getColumnas() - 1;
+				}
+				if (nc >= superficie.getColumnas()){
+					nc = 0;
+				}
+				if(superficie.casillaVacia(nf,nc)){
+					casillas[cont] = nf;
+					cont++;
+					casillas[cont] = nc;
+					cont++;
+				}
 			}
 		}
-		return vectorCasillas[aleatorio]; // hay que crear un metodo que cree un aleatorio de f y c
+		int casilla[];
+		if (cont==0){
+			casilla = new int[1];
+			casilla[0] = -1;
+		}
+		else {
+			casilla=Arrays.copyOf(casillas, cont);
+		}
+		return casilla;
 	}
 	/**
 	 * Mueve la celula creandola en la nueva posicion con los atributos SinMover y Reproducir que tenia y la elimina 

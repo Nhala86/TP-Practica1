@@ -79,10 +79,10 @@ public class Superficie{
 	* @param c valor entero positivo acotado en un rango valido del numero de columnas
 	* @return TRUE si lleno la casilla. FALSE para el caso contrario
 	*/
-	public boolean llenarCasilla(int f, int c, Celula celula){
+	public boolean llenarCasilla(int f, int c){
 		boolean ok = false;
 		if(casillaVacia(f, c)){
-			this.superficie[f][c] = celula;
+			this.superficie[f][c] = new Celula();
 			ok = true;
 		}
 		return ok;
@@ -137,6 +137,12 @@ public class Superficie{
 	 */
 	public int getSinMover(int f, int c) {
 		return superficie[f][c].getSinMover();
+	}
+
+	public void moverCelula(int f, int c, int i, int j) {
+		this.superficie[i][j]=this.superficie[f][c];
+		this.superficie[f][c]=null;
+		
 	}
 	
 }

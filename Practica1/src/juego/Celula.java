@@ -12,15 +12,7 @@ public class Celula {
 		this.pasosReproduccion = Constantes.PASOS_REPRODUCCION;
 	}
 	
-	/**
-	 * Metodo constructor especifico de la calse Celula definido para celulas con atributos especificos
-	 * @param pasosSinMover
-	 * @param pasosReproduccion
-	 */
-	public Celula(int pasosSinMover, int pasosReproduccion){
-		this.pasosSinMover = pasosSinMover;
-		this.pasosReproduccion = pasosReproduccion;
-	}
+	
 	
 	/**
      * Coge los valores numericos de pasosSinMover y pasosReproduccion y los convierte en una cadena para mostrar

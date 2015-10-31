@@ -42,7 +42,9 @@ public class Controlador {
 				}
 				//Como se vuelve a llenar la superficie, no toco el bool vacio
 				mundo.generarCelulas();
+				vacio = false;
                 System.out.println(mundo.toString());
+                
 			}
 			
 			else if (palabras[0].equalsIgnoreCase("crearcelula")){
@@ -57,11 +59,11 @@ public class Controlador {
 						vacio = false;
 					}
 					else {
-						System.out.println("Error, la posicion indicada no existe o esta ocupada");
+						System.out.println("Error, la posicion indicada esta ocupada");
 					}
 				}
 				else {
-					System.out.println("Los parametros pasados son incorrectos. Vuelva a introducirlos");
+					System.out.println("Los parametros pasados son incorrectos, la celula no existe. Vuelva a introducirlos");
 				}
                 System.out.println(mundo.toString());			
              }
@@ -77,11 +79,11 @@ public class Controlador {
 						System.out.print(palabras[2]);   System.out.println(")");
 					}
 					else {
-						System.out.println("Error, la posicion indicada no existe o esta ocupada");
+						System.out.println("Error, la posicion indicada esta ocupada");
 					}
 				}
 				else {
-					System.out.println("Los parametros pasados son incorrectos. Vuelva a introducirlos");
+					System.out.println("Los parametros pasados son incorrectos, la celula no existe. Vuelva a introducirlos");
 				}
                 System.out.println(mundo.toString());
 			}

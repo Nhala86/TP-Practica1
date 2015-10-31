@@ -139,11 +139,18 @@ public class Superficie{
 		return superficie[f][c].getSinMover();
 	}
 
-	public void moverCelula(int f, int c, int i, int j) {
-		this.superficie[i][j]=this.superficie[f][c];
-		this.superficie[f][c]=null;
+	public void moverCelula(int f, int c, int i, int j){
+		this.superficie[f][c] = this.superficie[i][j];
+		this.superficie[i][j]=null;
 		
 	}
-	
+	/**
+	 * Reinicia el valor de reproducir a la constante
+	 * @param f valor entero positivo que indica la fila de la celula
+	 * @param c valor entero positivo que indica la columna de la celula
+	 */
+	public void reiniciarReproducir(int f, int c){
+		this.superficie[f][c].reiniciarReproducir(); 
+	}
 }
 

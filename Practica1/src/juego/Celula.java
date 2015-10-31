@@ -49,4 +49,11 @@ public class Celula {
 	public int getSinMover() {
 		return this.pasosSinMover;
 	}
+	
+	/**
+	 * Reinicia el valor de pasosReproduccion a la constante
+	 */
+	public void reiniciarReproducir(){
+		this.pasosReproduccion = Constantes.PASOS_REPRODUCCION;
+	}
 }

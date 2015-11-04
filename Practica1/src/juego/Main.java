@@ -4,7 +4,10 @@ import java.util.Scanner;
 
 public class Main {
 	
-	//NO SE PROBARLO PARA VER SI FUNCIONA EL TABLERO Y LO DEMAS
+	/**
+	 * Metodo constructor del Main, que inicializa Scanner, Mundo y Controlador, y realiza la simulacion del juego
+	 * @param args valor predeterminado por java
+	 */
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		Mundo mundo = new Mundo();

@@ -10,41 +10,43 @@ public class Celula {
 	public Celula(){
 		this.pasosSinMover = Constantes.MAX_PASOS_SIN_MOVER;
 		this.pasosReproduccion = Constantes.PASOS_REPRODUCCION;
-	}
-	
-	
+	}	
 	
 	/**
      * Coge los valores numericos de pasosSinMover y pasosReproduccion y los convierte en una cadena para mostrar
-     * @return Una cadena con los dos parametros numericos de la celula, separados por un guion
+     * @return una cadena con los dos parametros numericos de la celula, separados por un guion
      */
     public String toString(){
        return this.pasosSinMover + "-" + this.pasosReproduccion;
     }
+    
     /**
-     * 
-     * @return
+     * Metodo que decrementa el numero de pasos de reproduccion que tiene la celula
+     * @return valor entero entre 0 y 2
      */
     public int decrementarRep(){
     	return this.pasosReproduccion--;
     }
+    
     /**
-     * 
-     * @return
+     * Metodo que decrementa el numero de pasos sin mover que tiene la celula
+     * @return valor entero entre 0 y 1
      */
 	public int decrementarSinMover() {
 		return this.pasosSinMover--;
 	}
+	
 	/**
-	 * 
-	 * @return
+	 * Metodo que devuelve los pasos de reproduccion de la celula
+	 * @return valor entero positivo que indica los pasos de reproduccion de la celula
 	 */
 	public int getReproducir() {
 		return this.pasosReproduccion;
 	}
+	
 	/**
-	 * 
-	 * @return
+	 * Metodo que devuelve los pasos de reproduccion de la celula
+	 * @return valor entero positivo que indica los pasos sin mover de la celula
 	 */
 	public int getSinMover() {
 		return this.pasosSinMover;

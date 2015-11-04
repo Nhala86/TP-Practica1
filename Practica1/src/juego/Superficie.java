@@ -95,6 +95,7 @@ public class Superficie{
 	public int getFilas(){
 		return this.filas;
 	}
+	
 	/**
 	 * Metodo que devuelve el valor entero positivo de las columnas de la Superficie
 	 * @return valor entero positivo de las columnas 
@@ -102,48 +103,61 @@ public class Superficie{
 	public int getColumnas(){
 		return this.columnas;
 	}
+	
 	/**
-	 * 
-	 * @param f
-	 * @param c
-	 * @return
+	 * Metodo que llama a la clase Superficie con unos parametros especificos de fila y columna para decrementar los pasos de reproducción
+	 * @param f entero positivo que hace referencia a la fila 
+	 * @param c entero positivo que hace referencia a la columna
+	 * @return el valor decrementado de pasos de reproducción
 	 */
 	public int decrementarRep(int f, int c){
 		return superficie[f][c].decrementarRep();
 	}
+	
 	/**
-	 * 
-	 * @param f
-	 * @param c
-	 * @return
+	 * Metodo que llama a la clase Superficie con unos parametros especificos de fila y columna para decrementar los pasos sin mover
+	 * @param f entero positivo que hace referencia a la fila 
+	 * @param c entero positivo que hace referencia a la columna
+	 * @return el valor decrementado de pasos sin mover
 	 */
 	public int decrementarSinMover(int f, int c) {
 		return superficie[f][c].decrementarSinMover();		
 	}
+	
 	/**
-	 * 
-	 * @param f
-	 * @param c
-	 * @return
+	 * Metodo que llama a la clase Superficie con unos parametros especificos de fila 
+	 * y columna para indicar los pasos de reproduccion de la celula
+	 * @param f entero positivo que hace referencia a la fila 
+	 * @param c entero positivo que hace referencia a la columna
+	 * @return el valor actual de pasos de reproducción
 	 */
 	public int getReproducir(int f, int c) {
 		return superficie[f][c].getReproducir();
 	}
 	/**
-	 * 
-	 * @param f
-	 * @param c
-	 * @return
+	 * Metodo que llama a la clase Superficie con unos parametros especificos de fila y columna para decrementar los pasos sin mover
+	 * @param f entero positivo que hace referencia a la fila 
+	 * @param c entero positivo que hace referencia a la columna
+	 * @return el valor actual de pasos sin mover
 	 */
 	public int getSinMover(int f, int c) {
 		return superficie[f][c].getSinMover();
 	}
-
+	
+	/**
+	 * Metodo que llama a la clase Superficie e iguala la posicion actual
+	 * a la nueva en la que se encuentra la celula. Y la antigua la vacia
+	 * @param f entero positivo que hace referencia a la fila nueva 
+	 * @param c entero positivo que hace referencia a la columna nueva
+	 * @param i entero positivo que hace referencia a la fila antigua
+	 * @param j entero positivo que hace referencia a la columna antigua
+	 */
 	public void moverCelula(int f, int c, int i, int j){
 		this.superficie[f][c] = this.superficie[i][j];
 		this.superficie[i][j]=null;
 		
 	}
+	
 	/**
 	 * Reinicia el valor de reproducir a la constante
 	 * @param f valor entero positivo que indica la fila de la celula

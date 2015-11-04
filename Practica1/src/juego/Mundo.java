@@ -15,8 +15,9 @@ public class Mundo{
 		this.superficie = new Superficie(Constantes.NUMEROFILAS, Constantes.NUMEROCOLUMNAS);
 		this.generarCelulas();
 	}
+	
 	/**
-	 * 
+	 * Metodo que aleatoriamente coloca las celulas en las casillas
 	 */
 	public void generarCelulas(){
 	 int contCelulas = 0;
@@ -30,6 +31,9 @@ public class Mundo{
 	 }
 	}
 	
+	/**
+	 * Metodo String que llama a la clase Superficie para generar la matriz del juego
+	 */
 	public String toString(){
 		return superficie.toString();
 	}
@@ -76,6 +80,7 @@ public class Mundo{
 			}
 		}
 	}
+	
 	/**
 	 * Se pasan la posicion de la celula a comprobar si se reproduce, moviendo la celula y creando la nueva celula en la 
 	 * posicion antigua si lo hace, tambien reinicia el contador de pasosReproduccion de la celula
@@ -83,7 +88,7 @@ public class Mundo{
 	 * @param j Entero que representa la columna de la celula a reproducirse
 	 * @param f Entero que representa la fila de la nueva celula creada por la reproduccion
 	 * @param c Entero que representa la columna de la nueva celula creada por la reproduccion
-	 * @return TRUE Si se ha reproducido la nueva celula, FALSE si no
+	 * @return TRUE si se ha reproducido la nueva celula, FALSE si no lo ha hecho
 	 */
 	private boolean reproducirse(int i, int j, int f, int c) {
 		boolean hecho = false;
@@ -97,6 +102,7 @@ public class Mundo{
 		}
 		return hecho;
 	}
+	
 	/**
 	 * Elimina la celula si cumple la condicion de que SinMovimientos sea menor que 0, dejando su casilla libre
 	 * @param f Entero que contiene la fila de la celula
@@ -112,15 +118,16 @@ public class Mundo{
 		}
 		return hecho;
 	}
+	
 	/**
 	 * Busco las posiciones vacias que hay alrededor de la celula, las guarda en un array de tipo casilla y elijo aleatoriamente
 	 * una de las posiciones de todas las disponibles para devolver
 	 * @param f Entero que representa la fila de la celula
 	 * @param c Entero que representa la columna de la celula
-	 * @return La casilla seleccionada aleatoriamente
+	 * @return posicion en el que se encuentra la casilla seleccionada aleatoriamente
 	 */
 	public Casilla posicionesVacias(int f, int c){ 
-		int cont=0;
+		int cont = 0;
 		int [] fila = {-1, 0, 1};
 		Casilla[] casilla = new Casilla[8];
 		for(int i = 0; i < 3; i++){
@@ -144,16 +151,15 @@ public class Mundo{
 			casilla[cont] = new Casilla(-1, -1);
 		}
 		return casilla[(int) (Math.random() * cont)]; 
-	}
-	
-	
+	}	
 
 	/**
-	 * Metodo que vacia el tablero de celulas
+	 * Metodo que reinicia la matriz del tablero dejando las casillas vacias
 	 */
 	public void vaciar(){
 		superficie.reset();
 	}
+	
 	/**
 	 * Crea una celula en la posicion (f,c) de la superficie
 	 * @param f Valor entero positivo fila de la matriz
@@ -168,7 +174,7 @@ public class Mundo{
 	 * Elimina la celula en la posicion (f,c) de la superficie
 	 * @param f Valor entero positivo fila de la matriz
 	 * @param c Valor entero positivo columna de la matriz
-	 * @return TRUE si se ha hecho el proceso de eliminar la celula
+	 * @return TRUE si se ha hecho el proceso de eliminar la celula. False para los demás casos
 	 */
 	public boolean eliminarCelulaSuperficie(int f, int c){
 		return superficie.vaciarCasilla(f,c);
@@ -181,6 +187,7 @@ public class Mundo{
 	public int getFilas(){
 		return this.superficie.getFilas();
 	}
+	
 	/**
 	 * Metodo que devuelve el valor entero positivo de las columnas de la superficie
 	 * @return valor entero positivo de las columnas de la Superficie en el Mundo

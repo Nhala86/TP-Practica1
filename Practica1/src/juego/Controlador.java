@@ -6,16 +6,28 @@ public class Controlador {
 	private Mundo mundo;
 	private Scanner in;
 	
+	/**
+	 * Metodo que inicializa el mundo y el scanner
+	 */
 	public Controlador(){
 		this.mundo = new Mundo();
 		this.in = new Scanner(System.in);
 	}
 	
+	/**
+	 * Metodo constructor del Controlador que define los parametros mundo e in
+	 * @param mundo le pasa el nuevo mundo inicializado
+	 * @param in le pasa los controles ya inicializados
+	 */
     public Controlador(Mundo mundo, Scanner in){
         this.mundo = mundo;
         this.in = in;
     }
-
+    
+    /**
+     * Metodo encargado de los controles que el usuario introduce para el funcionamiento del juego
+     * y encargado de llamar a las funciones en otras clases para mostrar por pantalla el juego y sus movimientos
+     */
 	public void realizaSimulacion(){
 		boolean fin = false;
 		boolean vacio = false;
@@ -117,6 +129,7 @@ public class Controlador {
 			}
 		}
 	}
+	
 	/**
 	 * Metodo que valida que los valores de fila y columna que pasa el usuario son validos
 	 * @param f valores enteros positivos de fila

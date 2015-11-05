@@ -20,15 +20,15 @@ public class Mundo{
 	 * Metodo que aleatoriamente coloca las celulas en las casillas
 	 */
 	public void generarCelulas(){
-	 int contCelulas = 0;
-	 while (contCelulas < Constantes.NUMEROCELULAS){
-		 int f = (int) (Math.random()* Constantes.NUMEROFILAS);
-		 int c = (int) (Math.random()* Constantes.NUMEROCOLUMNAS);
-		 if (this.superficie.casillaVacia(f, c)) {
-			 this.superficie.llenarCasilla(f, c);
-			 contCelulas++;
-		 }
-	 }
+		int contCelulas = 0;
+		while (contCelulas < Constantes.NUMEROCELULAS){
+			int f = (int) (Math.random()* Constantes.NUMEROFILAS);
+			int c = (int) (Math.random()* Constantes.NUMEROCOLUMNAS);
+			if (this.superficie.casillaVacia(f, c)) {
+				this.superficie.llenarCasilla(f, c);
+				contCelulas++;
+			}
+		}
 	}
 	
 	/**
@@ -44,12 +44,7 @@ public class Mundo{
 	 * Si no puede moverse, tiene un maximo de paso para poder hacerlo, si no muere
 	 */
 	public void evoluciona(){		
-		boolean [][] movido = new boolean [this.getFilas()][this.getColumnas()];
-		for(int i = 0; i < this.getFilas(); i++){
-    		for(int j = 0; j < this.getColumnas(); j++){
-    			movido[i][j] = false;
-		    }
-		}
+		boolean movido[][] = matriz();
 		for(int i = 0; i < this.getFilas(); i++){
     		for(int j = 0; j < this.getColumnas(); j++){
     			if (!superficie.casillaVacia(i, j) && !morir(i, j) && !movido[i][j]){
@@ -79,6 +74,20 @@ public class Mundo{
     			}
 			}
 		}
+	}
+	
+	/**
+	 * Crea e inicializa una matriz de booleanos con el tamaño de la matriz de celulas, para saber que posicion se ha movido durante el juego
+	 * @return La matriz booleana de dimension del tablero, con todas las posiciones inicializadas a falso
+	 */
+	private boolean[][] matriz(){
+		boolean [][] movido = new boolean [this.getFilas()][this.getColumnas()];
+		for(int i = 0; i < this.getFilas(); i++){
+    		for(int j = 0; j < this.getColumnas(); j++){
+    			movido[i][j] = false;
+		    }
+		}
+		return movido;
 	}
 	
 	/**

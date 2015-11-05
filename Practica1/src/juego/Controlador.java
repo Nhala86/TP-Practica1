@@ -45,20 +45,17 @@ public class Controlador {
 				}
 				System.out.println(mundo.toString());
 			}
-			
 			else if (string.equalsIgnoreCase("iniciar")){
 				System.out.println("Iniciando de nuevo el juego....");
 				//Condicion para no repetir el proceso de vaciar si todo esta vacio
 				if (!vacio){
 					mundo.vaciar();
 				}
-				//Como se vuelve a llenar la superficie, no toco el bool vacio
 				mundo.generarCelulas();
 				vacio = false;
                 System.out.println(mundo.toString());
                 
 			}
-			
 			else if (palabras[0].equalsIgnoreCase("crearcelula")){
 				//Hay fallo si no metes los 2 numeros separados (Ej: crearcelula 00)
 				int f = new Integer (palabras[1]);

@@ -7,7 +7,6 @@ import controlador.Controlador;
 import logica.Mundo;
 
 
-// StringBuffer
 
 public class Main {
 	

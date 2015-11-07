@@ -15,7 +15,11 @@ public class Celula {
 		this.pasosSinMover = MAX_PASOS_SIN_MOVER;
 		this.pasosReproduccion =PASOS_REPRODUCCION;
 	}	
-	
+	/**
+	 * Constructor de una celula con argumentos
+	 * @param SinMover Numero de pasos que puede pasar la celula sin moverse
+	 * @param Reproduccion Numero de pasos que le quedan a la celula para reproducirse
+	 */
 	public Celula(int SinMover, int Reproduccion){
 		this.pasosSinMover = SinMover;
 		this.pasosReproduccion = Reproduccion;
@@ -69,7 +73,10 @@ public class Celula {
 	public void reiniciarReproducir(){
 		this.pasosReproduccion = PASOS_REPRODUCCION;
 	}
-
+	/**
+     * Coge los valores numericos de pasosSinMover y pasosReproduccion y los convierte en una cadena para mostrar
+     * @return una cadena con los dos parametros numericos de la celula, separados por un guion
+     */
 	public Object toStringBuffer() {
 		return this.pasosSinMover + "-" + this.pasosReproduccion;
 	}

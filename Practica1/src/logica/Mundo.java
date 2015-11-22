@@ -5,8 +5,8 @@ import java.lang.StringBuffer;
 public class Mundo{
 	
 	private static final int NUMEROCELULAS = 6;
-	private static final int NUMEROFILAS = 3;
-	private static final int NUMEROCOLUMNAS = 4;
+	private static final int NUMEROFILAS = 12;
+	private static final int NUMEROCOLUMNAS = 14;
 	
 	private Superficie superficie;
 
@@ -39,7 +39,7 @@ public class Mundo{
 			int f = (int) (Math.random()* getFilas());
 			int c = (int) (Math.random()* getColumnas());
 			if (this.superficie.casillaVacia(f, c)) {
-				this.superficie.llenarCasilla(f, c);
+				this.superficie.llenarCasilla(f, c,new Celula());
 				contCelulas++;
 			}
 		}
@@ -153,7 +153,7 @@ public class Mundo{
 	 * @param c Entero que representa la columna de la celula
 	 * @return posicion en el que se encuentra la casilla seleccionada aleatoriamente
 	 */
-	public Casilla posicionesVacias(int f, int c){ 
+	private Casilla posicionesVacias(int f, int c){ 
 		int cont = 0;
 		int [] fila = {-1, 0, 1};
 		Casilla[] casilla = new Casilla[8];
@@ -194,7 +194,7 @@ public class Mundo{
 	 * @return TRUE se ha hecho el proceso de crear la celula
 	 */
 	public boolean crearCelulaSuperficie(int f, int c){ 
-		return superficie.llenarCasilla(f, c);  
+		return superficie.llenarCasilla(f, c,new Celula());  
 	}
 	
 	/**
@@ -205,7 +205,7 @@ public class Mundo{
 	* @param Reproduccion Numero de pasos que le quedan a la celula para reproducirse
 	*/
 	public void crearCelulaSuperficie(int f, int c, int SinMover, int Reproduccion){ 
-		superficie.llenarCasilla(f, c, SinMover, Reproduccion);  
+		superficie.llenarCasilla(f, c, new Celula(SinMover, Reproduccion));  
 	}
 	
 	/**

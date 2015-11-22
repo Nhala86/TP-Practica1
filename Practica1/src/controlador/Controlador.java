@@ -38,18 +38,18 @@ public class Controlador {
 		boolean fin = false;
 		boolean vacio = false;
 		System.out.println("Bienvenido al juego de la vida: ");
-        System.out.println(mundo.toStringBuffer());
+        //System.out.println(mundo.toStringBuffer());
 		while (!fin){
+			System.out.println(mundo.toStringBuffer());
 			System.out.print("Comando > ");
 			String string = in.nextLine();
 			String [] palabras = string.split(" ");
 			if (palabras[0].equalsIgnoreCase("paso")){
-				//Creo que si la superficie esta vacia, no hay evolucion posible
-				//Preguntar a puri
+				//Si la superficie esta vacia, no hay evolucion posible
 				if (!vacio){
 					mundo.evoluciona();
 				}
-				System.out.println(mundo.toStringBuffer());
+				//System.out.println(mundo.toStringBuffer());
 			}
 			else if (palabras[0].equalsIgnoreCase("iniciar")){
 				System.out.println("Iniciando de nuevo el juego....");
@@ -59,7 +59,7 @@ public class Controlador {
 				}
 				mundo.generarCelulas();
 				vacio = false;
-                System.out.println(mundo.toStringBuffer());
+                //System.out.println(mundo.toStringBuffer());
                 
 			}
 			else if (palabras[0].equalsIgnoreCase("crearcelula")){
@@ -70,7 +70,7 @@ public class Controlador {
 					if (mundo.crearCelulaSuperficie(f, c)){
 						System.out.print("Creamos la celula en: (");
 						System.out.print(palabras[1]);  System.out.print(",");
-						System.out.print(palabras[2]);   System.out.println(")");
+						System.out.print(palabras[2]);  System.out.println(")");
 						vacio = false;
 					}
 					else {
@@ -80,7 +80,7 @@ public class Controlador {
 				else {
 					System.out.println("Los parametros pasados son incorrectos, la celula no existe. Vuelva a introducirlos");
 				}
-                System.out.println(mundo.toStringBuffer());			
+               //System.out.println(mundo.toStringBuffer());			
              }
 			
 			else if (palabras[0].equalsIgnoreCase("eliminarcelula")){
@@ -100,7 +100,7 @@ public class Controlador {
 				else {
 					System.out.println("Los parametros pasados son incorrectos, la celula no existe. Vuelva a introducirlos");
 				}
-                System.out.println(mundo.toStringBuffer());
+                //System.out.println(mundo.toStringBuffer());
 			}
 			else if (palabras[0].equalsIgnoreCase("ayuda")){
 				System.out.println("POSIBLES COMANDOS:");
@@ -111,7 +111,7 @@ public class Controlador {
 				System.out.println("VACIAR: crea un mundo vacio");
 				System.out.println("CREARCELULA F C: crea una nueva celula en la posicion (f,c) si es posible");
 				System.out.println("ELIMINARCELULA F C: elimina una celula de la posicion (f,c) si es posible");
-                System.out.println(mundo.toStringBuffer());
+                //System.out.println(mundo.toStringBuffer());
 			}
 			else if (palabras[0].equalsIgnoreCase ("vaciar")){
 				//Condicion para no repetir el proceso de vaciar si todo esta vacio
@@ -120,7 +120,7 @@ public class Controlador {
 					vacio = true;
 				}
 				System.out.println("Vaciando la superficie....");
-                System.out.println(mundo.toStringBuffer());
+                //System.out.println(mundo.toStringBuffer());
 			}
 			else if (palabras[0].equalsIgnoreCase ("guardar")){
 				guardar();
@@ -129,7 +129,7 @@ public class Controlador {
 			else if (palabras[0].equalsIgnoreCase ("cargar")){
 				mundo = cargar();
 				System.out.println("Juego cargado con exito");
-				System.out.println(mundo.toStringBuffer());
+				//System.out.println(mundo.toStringBuffer());
 			}
 			else if (palabras[0].equalsIgnoreCase("salir")){
 				System.out.println("Fin de la simulacion.....");
@@ -137,7 +137,7 @@ public class Controlador {
 			}
 			else {
 				System.out.println("Comando no valido, introduzca otro");
-                System.out.println(mundo.toStringBuffer());
+                //System.out.println(mundo.toStringBuffer());
 			}
 		}
 	}
@@ -146,7 +146,7 @@ public class Controlador {
 	 * @return El nuevo mundo que hemos cargado del fichero
 	 * @throws IOException
 	 */
-	private Mundo cargar() throws IOException {
+	private Mundo cargar() throws IOException{
 		File archivo=new File("juego.txt");
 		Scanner entrada = new Scanner(archivo);
 		int fila = entrada.nextInt(), columna = entrada.nextInt();

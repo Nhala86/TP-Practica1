@@ -96,25 +96,15 @@ public class Superficie{
 	* @param c valor entero positivo acotado en un rango valido del numero de columnas
 	* @return TRUE si lleno la casilla. FALSE para el caso contrario
 	*/
-	public boolean llenarCasilla(int f, int c){
+	public boolean llenarCasilla(int f, int c, Celula celula){
 		boolean ok = false;
 		if(casillaVacia(f, c)){
-			this.superficie[f][c] = new Celula();
+			this.superficie[f][c] = celula;
 			ok = true;
 		}
 		return ok;
 	}	
 	
-	/**
-	* Metodo que genera una celula con los paramatros SinMover y Reproduccion
-	* @param f valor entero positivo acotado en un rango valido del numero de filas
-	* @param c valor entero positivo acotado en un rango valido del numero de columnas
-	* @param SinMover Numero de pasos que puede pasar la celula sin moverse
-	* @param Reproduccion Numero de pasos que le quedan a la celula para reproducirse
-	*/
-	public void llenarCasilla(int f, int c, int SinMover, int Reproduccion){
-		this.superficie[f][c] = new Celula(SinMover, Reproduccion);	
-	}	
 	
 	/**
 	 * Metodo que devuelve el valor entero positivo de las filas de la Superficie
